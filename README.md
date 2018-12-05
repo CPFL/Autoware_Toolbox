@@ -3,8 +3,10 @@ MATLAB/Simulink sample code suite for Autoware is provided. [Autoware](https://g
 
 ## Requirements
 - Preinstallation of Autoware ([here](https://github.com/CPFL/Autoware/wiki/Source-Build))
-- MATLAB
+- MATLAB/Simulink
 	- Robotics System Toolbox
+	- Computer Vision System Toolbox (Option)
+	- Image Processing Toolbox (Option)
 
 ## Provided Samples
 |module|node|Description|
@@ -21,9 +23,5 @@ MATLAB/Simulink sample code suite for Autoware is provided. [Autoware](https://g
 ||Nonuniform Voxel Grid Filte|Downsampling point cloud using nonuniform voxel grid filter.|
 ||Fog rectification|Producing defogged image.|
 
-
-% ## Node details
-
-
-
+## Research Papers for Citation
 
