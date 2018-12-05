@@ -21,13 +21,19 @@ MATLAB/Simulink sample code suite for Autoware is provided. [Autoware](https://g
 ||Nonuniform Voxel Grid Filte|Downsampling point cloud using nonuniform voxel grid filter.|
 ||Fog rectification|Producing defogged image.|
 
-## Node details
+|Node|Support||Topic Info||||Toolbox|
+||MATLAB|Simulink|Topic|Message type|Publish|Subscribe||
+|:--|:--|:--|:--|:--|:--|:--|:--|
+
 |a!r2!|b!c2!|c!r2c2!|a|e|
 |:--|:--|:--|:--|:--|:--|:--|
 |^|q!h!|w!h!|e!h!|r!h!|t!h!|p!h!|
 |^|q|w|e|r|t|p|
 
+## Node details
+|a|b!c2!|c|a|e|r|
+|:--|:--|:--|:--|:--|:--|:--|
+|^|q!h!|w!h!|e!h!|r!h!|t!h!|p!h!|
+|^|q|w|e|r|t|p|
 
-|Node|Support||Topic Info||||Toolbox|
-||MATLAB|Simulink|Topic|Message type|Publish|Subscribe||
-|:--|:--|:--|:--|:--|:--|:--|:--|
+
