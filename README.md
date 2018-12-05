@@ -14,14 +14,14 @@ MATLAB/Simulink sample code suite for Autoware is provided. [Autoware](https://g
 |Detection|ACF Detector|Detecting people using aggregate channel features (ACF).|
 |Localization|Vel pose connect|Determining the velocity and pose of the vehicle.|
 |Mission Planning|Lane Stop|Selecting waypoints according to the signal color.|
-||Lane Rule||
-|Motion Plannint|Path Select|Generating final waypoints from temporal waypoints.|
-||Pure Pursuit|Generating the actuation commands for the autonomous vehicle.|
-||Twist filter|Filtering the received actuation command.|
-|filters|Voxel Grid Filter|Downsampling point cloud using a voxel grid filter.
-||Random Filter|Downsampling point cloud with random sampling and without replacement.|
-||Nonuniform Voxel Grid Filte|Downsampling point cloud using nonuniform voxel grid filter.|
-||Fog rectification|Producing defogged image.|
+|	|Lane Rule|Generating waypoints corresponding to signal color.|
+|Motion Planning|Path Select|Generating final waypoints from temporal waypoints.|
+|	|Pure Pursuit|Generating the actuation commands for the autonomous vehicle.|
+|	|Twist filter|Filtering the received actuation command.|
+|Filters|Voxel Grid Filter|Downsampling point cloud using a voxel grid filter.
+|	|Random Filter|Downsampling point cloud with random sampling and without replacement.|
+|	|Nonuniform Voxel Grid Filte|Downsampling point cloud using nonuniform voxel grid filter.|
+|	|Fog rectification|Producing defogged image.|
 
 ## Research Papers for Citation
 
