@@ -23,8 +23,9 @@ MATLAB/Simulink sample code suite for Autoware is provided. [Autoware](https://g
 
 ## Node details
 |a!r2!|b!c2!|c!r2c2!|a|e|
-|^|q|w|e|r|t|p|
 |:--|:--|:--|:--|:--|:--|:--|
+|^|q!h!|w!h!|e!h!|r!h!|t!h!|p!h!|
+|^|q|w|e|r|t|p|
 
 
 |Node|Support||Topic Info||||Toolbox|
