@@ -5,8 +5,8 @@ MATLAB/Simulink sample code suite for Autoware is provided. [Autoware](https://g
 - Preinstallation of Autoware ([here](https://github.com/CPFL/Autoware/wiki/Source-Build))
 - MATLAB/Simulink
 	- Robotics System Toolbox
-	- Computer Vision System Toolbox (Option)
-	- Image Processing Toolbox (Option)
+	- Computer Vision System Toolbox (optional)
+	- Image Processing Toolbox (optional)
 
 ## Provided Samples
 |module|node|Description|
