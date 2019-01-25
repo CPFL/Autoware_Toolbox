@@ -1,5 +1,5 @@
-# Autoware_matlab_simulink
-MATLAB/Simulink sample code suite for Autoware is provided. [Autoware](https://github.com/CPFL/Autoware) provides a rich set of self-driving modules composed of sensing, computing, and actuation capabilities. By using this samples, several applications can be used from MATLAB/Simulink.
+# Autoware Toolbox
+Autoware Toolbox is a MATLAB/Simulink sample code suite for [Autoware](https://github.com/CPFL/Autoware). Autoware provides a rich set of self-driving modules composed of sensing, computing, and actuation capabilities. By using this samples, several applications can be used from MATLAB/Simulink.
 
 ## Requirements
 - Preinstallation of Autoware ([here](https://github.com/CPFL/Autoware/wiki/Source-Build))
