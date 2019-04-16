@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<demos>
+    <!-- Top-level Demo title in TOC -->
+    <name>Autoware Toolbox</name>
+    <type>matlab</type>
+    <icon>HelpIcon.DEMOS</icon>
+    <description>Examples of Autoware ROS node provided by the Autoware Toolbox</description>
+    
+    <website>
+        <a href="https://github.com/CPFL/Autoware_Toolbox">Autoware Toolbox GitHub Repository</a>
+    </website>
+
+    <!-- Node samples created with MATLAB -->
+    <demosection>
+        <label>Node samples created with MATLAB</label>
+        <!-- Detection -->
+        <demoitem>
+            <label>ACF Detector</label>
+            <type>M-file</type>
+            <file>Detection/acf_detector_ml_en.html</file>
+            <source>..\..\samples\computing\perception\detection\vision_detector\acf_detector\acf_detector_ml.m</source>
+        </demoitem>
+        <demoitem>
+            <label>LiDAR Euclidean Track</label>
+            <type>M-file</type>
+            <file>Detection/lidar_euclidean_track_ml_en.html</file>
+            <source>..\..\samples\computing\perception\detection\lidar_tracker\lidar_euclidean_track\lidar_euclidean_track_ml.m</source>
+        </demoitem>
+        <demoitem>
+            <label>Vision Dummy Track</label>
+            <type>M-file</type>
+            <file>Detection/vision_dummy_track_ml_en.html</file>
+            <source>..\..\samples\computing\perception\detection\vision_tracker\vision_dummy_track\vision_dummy_track.m</source>
+        </demoitem>
+        
+        <!-- Localization -->
+        <demoitem>
+            <label>Vel Pose Connect</label>
+            <type>M-file</type>
+            <file>Localization/vel_pose_connect_ml_en.html</file>
+            <source>..\..\samples\computing\perception\localization\autoware_connector\vel_pose_connect\vel_pose_connect_ml.m</source>
+        </demoitem>
+
+        <!-- Mission Planning -->
+        <demoitem>
+            <label>Lane Stop</label>
+            <type>M-file</type>
+            <file>Planning/lane_stop_ml_en.html</file>
+            <source>..\..\samples\computing\planning\mission\lane_stop\lane_stop_ml.m</source>
+        </demoitem>
+
+        <!-- Motion Planning -->
+        <demoitem>
+            <label>Path Select</label>
+            <type>M-file</type>
+            <file>Planning/path_select_ml_en.html</file>
+            <source>..\..\samples\computing\planning\motion\lattice_planner\path_select\path_select_ml.m</source>
+        </demoitem>
+        <demoitem>
+            <label>wf_simulator</label>
+            <type>M-file</type>
+            <file>Planning/wf_simulator_ml_en.html</file>
+            <source>..\..\samples\computing\planning\motion\waypoint_follower\wf_simulator\wf_simulator_ml.m</source>
+        </demoitem>
+        
+        <!-- Filters -->
+        <demoitem>
+            <label>Voxel Grid Filter</label>
+            <type>M-file</type>
+            <file>Filters/demo_voxel_grid_filter_ml_en.html</file>
+            <thumbnail>xxx.PNG</thumbnail>
+            <source>..\..\samples\sensing\filters\points_downsampler\voxel_grid_filter\voxel_grid_filter_ml.m</source>
+        </demoitem>
+        <demoitem>
+            <label>Random Filter</label>
+            <type>M-file</type>
+            <file>Filters/demo_random_filter_ml_en.html</file>
+            <source>..\..\samples\sensing\filters\points_downsampler\random_filter\random_filter_ml.m</source>
+        </demoitem>
+        <demoitem>
+            <label>Nonuniform Voxel Grid Filter</label>
+            <type>M-file</type>
+            <file>Filters/nonuniformgrid_filter_ml_en.html</file>
+            <source>..\..\samples\sensing\filters\points_downsampler\nonuniformgrid_filter\nonuniformgrid_filter_ml.m</source>
+        </demoitem>
+        <demoitem>
+            <label>Fog Rectification</label>
+            <type>M-file</type>
+            <file>Filters/fog_rectification_ml_en.html</file>
+            <source>..\..\samples\sensing\filters\image_processor\fog_rectification\fog_rectification_ml.m</source>
+        </demoitem>
+    </demosection>
+
+    <!-- Node samples created with Simulink -->
+    <demosection>
+        <label>Node samples created with Simulink</label>
+        <!-- Detection -->
+        <demoitem>
+            <label>ACF Detector</label>
+            <type>model</type>
+            <file>Detection/acf_detector_sl_en.html</file>
+            <source>..\..\samples\computing\perception\detection\vision_detector\acf_detector\acf_detector_sl.slx</source>
+        </demoitem>
+        <demoitem>
+            <label>Vision Dummy Track</label>
+            <type>model</type>
+            <file>Detection/vision_dummy_track_sl_en.html</file>
+            <source>..\..\samples\computing\perception\detection\vision_tracker\vision_dummy_track\vision_dummy_track_sl.slx</source>
+        </demoitem>
+
+        <!-- Localization -->
+        <demoitem>
+            <label>Vel Pose Connect</label>
+            <type>model</type>
+            <file>Localization/vel_pose_connect_sl_en.html</file>
+            <source>..\..\samples\computing\perception\localization\autoware_connector\vel_pose_connect\vel_pose_connect_sl.slx</source>
+        </demoitem>
+
+        <!-- Mission Planning -->
+        <demoitem>
+            <label>Lane Stop</label>
+            <type>model</type>
+            <file>Planning/lane_stop_sl_en.html</file>
+            <source>..\..\samples\computing\planning\mission\lane_stop\lane_stop_sl.slx</source>
+        </demoitem>
+
+        <!-- Motion Planning -->
+        <demoitem>
+            <label>Path Select</label>
+            <type>model</type>
+            <file>Planning/path_select_sl_en.html</file>
+            <source>..\..\samples\computing\planning\motion\lattice_planner\path_select\path_select_sl.slx</source>
+        </demoitem>
+        <demoitem>
+            <label>Pure Pursuit</label>
+            <type>model</type>
+            <file>Planning/pure_pursuit_sl_en.html</file>
+            <source>..\..\samples\computing\planning\motion\waypoint_follower\pure_pursuit\pure_pursuit_sl.slx</source>
+        </demoitem>
+        <demoitem>
+            <label>Twist Filter</label>
+            <type>model</type>
+            <file>Planning/twist_filter_sl_en.html</file>
+            <source>..\..\samples\computing\planning\motion\waypoint_follower\twist_filter\twist_filter_sl.slx</source>
+        </demoitem>
+    </demosection>
+
+    
+</demos>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<toc version="2.0">
+    <tocitem target="autoware_toolbox_product_page_ja.html">Autoware Toolbox (ja)
+        <!-- Nest tocitems to create hierarchical entries in  Contents-->
+        <!-- To include icons, use the following syntax for tocitems: -->
+        <!-- <tocitem target="foo.html" image="HelpIcon.NAME"> -->
+        <!-- Title-of-Section </tocitem> -->
+        <!-- where NAME is one of the following (use capital letters): -->
+        <!-- FUNCTION, USER_GUIDE, EXAMPLES, BLOCK, GETTING_STARTED, -->
+        <!-- DEMOS, RELEASE_NOTES --> 
+        <!-- Icon images used for these entries are also stored in -->
+        <!-- matlabroot/toolbox/matlab/icons -->   
+        <!-- A Getting Started Guide usually comes first -->
+        <tocitem target="install_awtb_ja.html">Autoware Tooolbox のインストール (Installation)</tocitem>
+        <tocitem target="samples/demos.xml">Autoware Tooolbox 内の Autoware ノードサンプル</tocitem>
+        
+        <!-- User Guide comes next -->
+        
+        <!-- Function reference next -->
+        <!-- First item is page describing function categories, if any -->
+        <tocitem target="awtb_functions_by_cat_ja.html">カテゴリ別関数リファレンス (Function Reference)
+            <!-- List category with link to anchor in above page -->
+            <tocitem target="Helper/helper_functions_ja.html">Helper 
+                <tocitem target="Helper/addCustomMessageFolderToSearchPath_help_ja.html">addCustomMessageFolderToSearchPath - Autoware用ROSカスタムメッセージをMATLAB検索パスに登録</tocitem>
+                <tocitem target="Helper/createCustomMessages_help_ja.html">createCustomMessages - Autoware用ROSカスタムメッセージをMATLAB形式で生成</tocitem>
+                <tocitem target="Helper/editJavaClassPath_help_ja.html">editJavaClassPath - javaclasspath.txt にjarファイルパスを追加</tocitem>
+            </tocitem>
+            <tocitem target="underConstruction.html">その他
+                <tocitem target="underConstruction.html"></tocitem>
+            </tocitem>
+
+            <!-- List links to function ref pages, alphabetically -->
+            <!-- <...> -->
+
+        <!-- Optional Release Notes file -->
+        <!-- Optional List of Examples, with hyperlinks to examples in other files -->
+        <!-- Optional Function Reference by category comes next -->
+        
+        <!-- Optional link or links to your or other Web sites -->
+            
+        </tocitem>
+    </tocitem>
+</toc>

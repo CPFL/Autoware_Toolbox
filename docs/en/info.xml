@@ -1,0 +1,11 @@
+<productinfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:noNamespaceSchemaLocation="optional">
+    <?xml-stylesheet type="text/xsl"href="optional"?>
+
+    <matlabrelease>2018a</matlabrelease>
+    <name>Autoware Toolbox (en)</name>
+    <type>links_targets</type>
+    <icon></icon>
+    <help_location>./</help_location>
+    <help_contents_icon></help_contents_icon>
+</productinfo>

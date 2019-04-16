@@ -1,0 +1,237 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Autoware Toolbox &#12398;&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;</title><meta name="generator" content="MATLAB 9.4"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-04-15"><meta name="DC.source" content="install_awtb_ja.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Autoware Toolbox &#12398;&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;</h1><!--introduction--><p>MATLAB &#12391; Autoware Toolbox &#12434;&#21033;&#29992;&#12377;&#12427;&#12383;&#12417;&#12398;&#25163;&#38918;&#12434;&#35500;&#26126;&#12375;&#12414;&#12377;&#12290;</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">1. Autoware Toolbox &#12398;&#12480;&#12454;&#12531;&#12525;&#12540;&#12489;</a></li><li><a href="#2">2. Autoware Toolbox &#12434; MATLAB &#26908;&#32034;&#12497;&#12473;&#12395;&#30331;&#37682;</a></li><li><a href="#3">3. Robotics System Toolbox Interface for ROS Custom Messages &#12398;&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;</a></li><li><a href="#5">4. ROS &#12459;&#12473;&#12479;&#12512;&#12513;&#12483;&#12475;&#12540;&#12472;&#12398;&#20316;&#25104;</a></li><li><a href="#6">5. Java &#12498;&#12540;&#12503;&#12513;&#12514;&#12522;&#12469;&#12452;&#12474;&#12398;&#35373;&#23450;</a></li><li><a href="#7">6. MATLAB &#12398;&#20877;&#36215;&#21205;</a></li></ul></div><h2 id="1">1. Autoware Toolbox &#12398;&#12480;&#12454;&#12531;&#12525;&#12540;&#12489;</h2><p><a href="https://github.com/CPFL/Autoware_Toolbox">GitHub &#12395;&#12354;&#12427; Autoware Toolbox &#12398;&#12522;&#12509;&#12472;&#12488;&#12522;</a>&#12434;&#12525;&#12540;&#12459;&#12523;&#12395;&#12463;&#12525;&#12540;&#12531;&#65288;&#12414;&#12383;&#12399;&#12480;&#12454;&#12531;&#12525;&#12540;&#12489;&#65289;&#12375;&#12414;&#12377;&#12290;</p><h2 id="2">2. Autoware Toolbox &#12434; MATLAB &#26908;&#32034;&#12497;&#12473;&#12395;&#30331;&#37682;</h2><p>Autoware Toolbox &#12398;&#12523;&#12540;&#12488;&#12501;&#12457;&#12523;&#12480;&#12395;&#12354;&#12427; autoware_toolbox_setup.m &#12434;&#23455;&#34892;&#12375;&#12414;&#12377;&#12290;</p><p><img vspace="5" hspace="5" src="./images/run_setup.PNG" alt=""> </p><p><br></p><h2 id="3">3. Robotics System Toolbox Interface for ROS Custom Messages &#12398;&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;</h2><p><b><tt>a. &#12452;&#12531;&#12473;&#12488;&#12540;&#12523;&#28168;&#12415;&#12363;&#30906;&#35469;&#12375;&#12414;&#12377;&#12290;</tt></b></p><p>&#19979;&#35352;&#12398;&#12503;&#12525;&#12464;&#12521;&#12512;&#12434;&#31684;&#22258;&#36984;&#25246;&#12375;&#12390;&#23455;&#34892;&#65288;F9&#65289;&#12377;&#12427;&#12363;&#12289;MATLAB &#12467;&#12510;&#12531;&#12489;&#12454;&#12451;&#12531;&#12489;&#12454;&#12395;&#36028;&#12426;&#20184;&#12369;&#12390;&#23455;&#34892;&#12375;&#12390;&#12367;&#12384;&#12373;&#12356;&#12290;</p><pre class="language-matlab">addons = matlab.addons.installedAddons;
+addon_id = <span class="string">'RO_CUSTOM_ROS_INTERFACE'</span>;
+tf = strcmp(addon_id, addons.Identifier);
+installed_ros_if = any(tf);
+<span class="keyword">if</span> installed_ros_if
+    disp(<span class="string">'Robotics System Toolbox Interface for ROS Custom Messages &#12364;&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;&#12373;&#12428;&#12390;&#12356;&#12414;&#12377;&#12290;'</span>);
+<span class="keyword">else</span>
+    disp(<span class="string">'Robotics System Toolbox Interface for ROS Custom Messages &#12364;&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;&#12373;&#12428;&#12390;&#12356;&#12414;&#12379;&#12435;&#12290;'</span>);
+<span class="keyword">end</span>
+</pre><p>&#20197;&#19979;&#12395;&#31684;&#22258;&#36984;&#25246;&#12398;&#23455;&#34892;&#20363;&#12434;&#31034;&#12375;&#12414;&#12377;&#12290;</p><p><img vspace="5" hspace="5" src="./images/chk_rst_if_cstm_msg.PNG" alt=""> </p><p><br></p><p>&#19978;&#35352;&#12503;&#12525;&#12464;&#12521;&#12512;&#12434;&#23455;&#34892;&#12377;&#12427;&#12392;&#12289;&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;&#28168;&#12415;&#12398;&#22580;&#21512;&#12399;&#12289;MATLAB &#12467;&#12510;&#12531;&#12489;&#12454;&#12451;&#12531;&#12489;&#12454;&#12395; &#12300;Robotics System Toolbox Interface for ROS Custom Messages &#12364;&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;&#12373;&#12428;&#12390;&#12356;&#12414;&#12377;&#12290;&#12301; &#12392;&#34920;&#31034;&#12373;&#12428;&#12414;&#12377;&#12290;</p><p><img vspace="5" hspace="5" src="./images/installed_message.PNG" alt=""> </p><p><br></p><p>&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;&#12373;&#12428;&#12390;&#12356;&#12394;&#12356;&#22580;&#21512;&#12399;&#12289;MATLAB &#12467;&#12510;&#12531;&#12489;&#12454;&#12451;&#12531;&#12489;&#12454;&#12395; &#12300;Robotics System Toolbox Interface for ROS Custom Messages &#12364;&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;&#12373;&#12428;&#12390;&#12356;&#12414;&#12379;&#12435;&#12290;&#12301; &#12392;&#34920;&#31034;&#12373;&#12428;&#12414;&#12377;&#12290;</p><p><img vspace="5" hspace="5" src="./images/not_installed_message.PNG" alt=""> </p><p><br></p><p><b><tt>b. Robotics System Toolbox Interface for ROS Custom Messages &#12398;&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;</tt></b></p><p>&#8251;&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;&#28168;&#12415;&#12398;&#22580;&#21512;&#12399;&#12289;&#26412;&#20316;&#26989;&#12399;&#19981;&#35201;&#12391;&#12377;&#12290;&#12300;4. ROS &#12459;&#12473;&#12479;&#12512;&#12513;&#12483;&#12475;&#12540;&#12472;&#12398;&#20316;&#25104;&#12301;&#12395;&#36914;&#12435;&#12391;&#12367;&#12384;&#12373;&#12356;&#12290;</p><p>Robotics System Toolbox &#12395;&#38306;&#36899;&#12377;&#12427;&#12450;&#12489;&#12458;&#12531;&#12434;&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;&#12377;&#12427;&#12395;&#12399;&#12289; &#20197;&#19979;&#12398;&#12467;&#12510;&#12531;&#12489;&#12434; MATLAB &#12467;&#12510;&#12531;&#12489;&#12454;&#12451;&#12531;&#12489;&#12454;&#12395;&#20837;&#21147;&#12377;&#12427;&#12363;&#12289;&#31684;&#22258;&#36984;&#25246;&#12375;&#12390;&#23455;&#34892;&#12375;&#12414;&#12377;&#12290;</p><pre class="language-matlab">roboticsAddons();
+</pre><p>&#12450;&#12489;&#12458;&#12531; &#12456;&#12463;&#12473;&#12503;&#12525;&#12540;&#12521;&#12364;&#38283;&#12356;&#12383;&#12425;&#12289;Robotics System Toolbox Interface for ROS Custom Messages &#12434;&#36984;&#25246;&#12375;&#12414;&#12377;&#12290;</p><p><img vspace="5" hspace="5" src="./images/addon_explore.PNG" alt=""> </p><p><br></p><p>&#65339;&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;&#65341;&#12434;&#12463;&#12522;&#12483;&#12463;&#12375;&#12414;&#12377;&#12290;</p><p><img vspace="5" hspace="5" src="./images/install_if_ros_custom_msg.PNG" alt=""> </p><p><br></p><p>&#65339;&#12450;&#12489;&#12458;&#12531; &#12456;&#12463;&#12473;&#12503;&#12525;&#12540;&#12521;&#12540;&#65341;&#12398;&#12475;&#12483;&#12488;&#12450;&#12483;&#12503;&#25351;&#31034;&#12395;&#24341;&#12365;&#32154;&#12365;&#24467;&#12356;&#12289;&#12450;&#12489;&#12458;&#12531;&#12434;&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;&#12375;&#12414;&#12377;&#12290; &#65339;&#25215;&#35582;&#12377;&#12427;&#65341;&#12434;&#12463;&#12522;&#12483;&#12463;&#12375;&#12414;&#12377;&#12290;</p><p><img vspace="5" hspace="5" src="./images/agree_license.PNG" alt=""> </p><p><br></p><p>&#12469;&#12540;&#12489;&#12497;&#12540;&#12486;&#12451; &#12477;&#12501;&#12488;&#12454;&#12455;&#12450;&#12398;&#30011;&#38754;&#12364;&#20986;&#12390;&#12365;&#12383;&#12425;&#12289;&#65339;&#27425;&#12408;&#65341;&#12434;&#12463;&#12522;&#12483;&#12463;&#12375;&#12414;&#12377;&#12290;</p><p><img vspace="5" hspace="5" src="./images/third_party_software.PNG" alt=""> </p><p><tt>&#21442;&#32771;</tt></p><div><ol><li><a href="matlab:web(fullfile(docroot,'robotics/ug/install-robotics-system-toolbox-support-packages.html'))">Install Robotics System Toolbox Add-ons &#65288;MATLAB&#12504;&#12523;&#12503;&#65289;</a></li><li><a href="https://www.mathworks.com/help/releases/R2018a/robotics/ug/install-robotics-system-toolbox-support-packages.html">Install Robotics System Toolbox Add-ons &#65288;MathWorks Web&#12469;&#12452;&#12488;&#65289;</a></li></ol></div><h2 id="5">4. ROS &#12459;&#12473;&#12479;&#12512;&#12513;&#12483;&#12475;&#12540;&#12472;&#12398;&#20316;&#25104;</h2><p><b><tt>a. &#12459;&#12473;&#12479;&#12512; &#12513;&#12483;&#12475;&#12540;&#12472;&#29983;&#25104;&#12503;&#12525;&#12464;&#12521;&#12512;&#12434;&#23455;&#34892;&#12375;&#12414;&#12377;&#12290;</tt></b></p><p>&#19979;&#35352;&#12398;&#12467;&#12510;&#12531;&#12489;&#12434;&#31684;&#22258;&#36984;&#25246;&#12375;&#12390;&#23455;&#34892;&#65288;F9&#65289;&#12377;&#12427;&#12363;&#12289;MATLAB &#12467;&#12510;&#12531;&#12489;&#12454;&#12451;&#12531;&#12489;&#12454;&#12395;&#36028;&#12426;&#20184;&#12369;&#12390;&#23455;&#34892;&#12375;&#12390;&#12367;&#12384;&#12373;&#12356;&#12290;</p><pre class="language-matlab">autoware.createCustomMessages();
+</pre><p><b><tt>b. javaclasspath.txt &#12434;&#32232;&#38598;&#12375;&#12414;&#12377;&#12290;</tt></b></p><p>&#20197;&#19979;&#12398;&#25163;&#38918;&#12395;&#24467;&#12358;&#12363;&#12289; <a href="matlab:autoware.editJavaClassPath()">autoware.editJavaClassPath()</a> &#12434;&#23455;&#34892;&#12375;&#12414;&#12377;&#12290;</p><p>&#12467;&#12510;&#12531;&#12489;&#12454;&#12451;&#12531;&#12489;&#12454;&#12398; javaclasspath.txt &#12522;&#12531;&#12463;&#12434;&#12463;&#12522;&#12483;&#12463;&#12375;&#12390;&#12289;&#12371;&#12398;&#12501;&#12449;&#12452;&#12523;&#12434;&#12456;&#12487;&#12451;&#12479;&#12540;&#12391;&#38283;&#12365;&#12414;&#12377;&#12290; &#12467;&#12510;&#12531;&#12489;&#12454;&#12451;&#12531;&#12489;&#12454;&#12395;&#34920;&#31034;&#12373;&#12428;&#12390;&#12356;&#12427; jar &#12501;&#12449;&#12452;&#12523;&#12398;&#22580;&#25152;&#12434;&#12467;&#12500;&#12540;&#12375;&#12289;&#12381;&#12428;&#12382;&#12428;&#26032;&#12375;&#12356;&#34892;&#12392;&#12375;&#12390;&#12371;&#12398;&#12501;&#12449;&#12452;&#12523;&#12395;&#36028;&#12426;&#20184;&#12369;&#12414;&#12377;&#12290; &#12371;&#12398;&#12501;&#12449;&#12452;&#12523;&#12364;&#23384;&#22312;&#12375;&#12394;&#12356;&#22580;&#21512;&#12289;&#20316;&#25104;&#12434;&#27714;&#12417;&#12427;&#12503;&#12525;&#12531;&#12503;&#12488;&#12364;&#34920;&#31034;&#12373;&#12428;&#12414;&#12377;&#12290; &#65339;&#12399;&#12356;&#65341; &#12434;&#12463;&#12522;&#12483;&#12463;&#12375;&#12390;&#12363;&#12425;&#12289;&#12501;&#12449;&#12452;&#12523;&#12398;&#22580;&#25152;&#12434;&#12467;&#12500;&#12540;&#12375;&#12390;&#12371;&#12398;&#12501;&#12449;&#12452;&#12523;&#12395;&#36028;&#12426;&#20184;&#12369;&#12414;&#12377;&#12290;</p><p><img vspace="5" hspace="5" src="./images/after_rosgenmsg.PNG" alt=""> </p><p><br></p><p>&#34892;&#12434;&#36861;&#21152;&#12375;&#12383;&#24460;&#12398; javaclasspath.txt &#12399;&#27425;&#12398;&#12424;&#12358;&#12395;&#12394;&#12426;&#12414;&#12377;&#12290; &#12371;&#12398;&#12501;&#12449;&#12452;&#12523;&#12395;&#12399;&#26082;&#12395;&#20182;&#12398;&#12497;&#12473;&#12364;&#23384;&#22312;&#12375;&#12390;&#12356;&#12427;&#22580;&#21512;&#12418;&#12354;&#12426;&#12414;&#12377;&#12290;</p><p><img vspace="5" hspace="5" src="./images/javaclasspath_txt.PNG" alt=""> </p><p><br></p><p><b><tt>c. &#12459;&#12473;&#12479;&#12512;&#12513;&#12483;&#12475;&#12540;&#12472;&#12398;&#12501;&#12457;&#12523;&#12480;&#12434; MATLAB &#26908;&#32034;&#12497;&#12473;&#12395;&#36861;&#21152;&#12375;&#12414;&#12377;&#12290;</tt></b></p><p>&#19979;&#35352;&#12398;&#12467;&#12510;&#12531;&#12489;&#12434;&#31684;&#22258;&#36984;&#25246;&#12375;&#12390;&#23455;&#34892;&#65288;F9&#65289;&#12377;&#12427;&#12363;&#12289;MATLAB &#12467;&#12510;&#12531;&#12489;&#12454;&#12451;&#12531;&#12489;&#12454;&#12395;&#36028;&#12426;&#20184;&#12369;&#12390;&#23455;&#34892;&#12375;&#12390;&#12367;&#12384;&#12373;&#12356;&#12290;</p><pre class="language-matlab">autoware.addCustomMessageFolderToSearchPath();
+</pre><p><tt>&#21442;&#32771;</tt></p><div><ol><li><a href="matlab:web(fullfile(docroot,'robotics/ug/create-custom-messages-from-ros-package.html'))">Create Custom Messages from ROS Package &#65288;MATLAB&#12504;&#12523;&#12503;&#65289;</a></li><li><a href="https://www.mathworks.com/help/releases/R2018a/robotics/ug/create-custom-messages-from-ros-package.html">Create Custom Messages from ROS Package &#65288;MathWorks Web&#12469;&#12452;&#12488;&#65289;</a></li></ol></div><h2 id="6">5. Java &#12498;&#12540;&#12503;&#12513;&#12514;&#12522;&#12469;&#12452;&#12474;&#12398;&#35373;&#23450;</h2><p>Autoware&#12391;&#12399;&#12289;&#12469;&#12452;&#12474;&#12364;&#22823;&#12365;&#12356;ROS&#12513;&#12483;&#12475;&#12540;&#12472;&#12434;&#36865;&#21463;&#20449;&#12377;&#12427;&#12371;&#12392;&#12364;&#12354;&#12426;&#12414;&#12377;&#12290; &#12381;&#12371;&#12391;&#12289;Java &#12498;&#12540;&#12503;&#12513;&#12514;&#12522;&#12469;&#12452;&#12474;&#12434;&#22679;&#12420;&#12375;&#12390;&#12362;&#12365;&#12414;&#12377;&#12290; &#35519;&#25972;&#24460;&#12289;&#65339;OK&#65341;&#12508;&#12479;&#12531;&#12434;&#12463;&#12522;&#12483;&#12463;&#12375;&#12390;&#12289;&#65339;&#35373;&#23450;&#65341;&#12480;&#12452;&#12450;&#12525;&#12464;&#12508;&#12483;&#12463;&#12473;&#12434;&#38281;&#12376;&#12414;&#12377;&#12290;</p><p><a href="matlab:preferences('%E4%B8%80%E8%88%AC')">&#65339;&#35373;&#23450;&#65341;&#12480;&#12452;&#12450;&#12525;&#12464;&#12508;&#12483;&#12463;&#12473;&#12434;&#38283;&#12365;</a>&#12289;Java &#12498;&#12540;&#12503;&#12513;&#12514;&#12522;&#12469;&#12452;&#12474;&#12434;&#35519;&#25972;&#12375;&#12414;&#12377;&#12290;</p><p><img vspace="5" hspace="5" src="./images/java_heap_memory_preferences.PNG" alt=""> </p><h2 id="7">6. MATLAB &#12398;&#20877;&#36215;&#21205;</h2><p>MATLAB &#12434;&#20877;&#36215;&#21205;&#24460;&#12289;Autoware &#12513;&#12483;&#12475;&#12540;&#12472;&#12364;&#30331;&#37682;&#12373;&#12428;&#12390;&#12356;&#12427;&#12363;&#30906;&#35469;&#12375;&#12414;&#12377;&#12290;</p><pre class="language-matlab">rosmsg <span class="string">list</span>
+</pre><p>Autoware &#12513;&#12483;&#12475;&#12540;&#12472;&#12364;&#30331;&#37682;&#12373;&#12428;&#12390;&#12356;&#12428;&#12400;&#12289;&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;&#12399;&#32066;&#20102;&#12391;&#12377;&#12290;</p><p><img vspace="5" hspace="5" src="./images/autoware_messages.PNG" alt=""> </p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Autoware Toolbox のインストール
+% 
+% MATLAB で Autoware Toolbox を利用するための手順を説明します。
+% 
+%% 1. Autoware Toolbox のダウンロード
+% 
+% <https://github.com/CPFL/Autoware_Toolbox GitHub にある Autoware Toolbox のリポジトリ>をローカルにクローン（またはダウンロード）します。
+% 
+%% 2. Autoware Toolbox を MATLAB 検索パスに登録
+%
+% Autoware Toolbox のルートフォルダにある autoware_toolbox_setup.m を実行します。
+% 
+% <<./images/run_setup.PNG>>
+% 
+% <html><br></html>
+%
+%% 3. Robotics System Toolbox Interface for ROS Custom Messages のインストール
+%
+% *|a. インストール済みか確認します。|*
+% 
+% 下記のプログラムを範囲選択して実行（F9）するか、MATLAB コマンドウィンドウに貼り付けて実行してください。
+% 
+%   addons = matlab.addons.installedAddons;
+%   addon_id = 'RO_CUSTOM_ROS_INTERFACE';
+%   tf = strcmp(addon_id, addons.Identifier);
+%   installed_ros_if = any(tf);
+%   if installed_ros_if
+%       disp('Robotics System Toolbox Interface for ROS Custom Messages がインストールされています。');
+%   else
+%       disp('Robotics System Toolbox Interface for ROS Custom Messages がインストールされていません。');
+%   end
+% 
+% 以下に範囲選択の実行例を示します。
+% 
+% <<./images/chk_rst_if_cstm_msg.PNG>>
+% 
+% <html><br></html>
+% 
+% 上記プログラムを実行すると、インストール済みの場合は、MATLAB コマンドウィンドウに
+% 「Robotics System Toolbox Interface for ROS Custom Messages がインストールされています。」
+% と表示されます。
+% 
+% <<./images/installed_message.PNG>>
+% 
+% <html><br></html>
+%
+% インストールされていない場合は、MATLAB コマンドウィンドウに
+% 「Robotics System Toolbox Interface for ROS Custom Messages がインストールされていません。」
+% と表示されます。
+% 
+% <<./images/not_installed_message.PNG>>
+% 
+% <html><br></html>
+% 
+% *|b. Robotics System Toolbox Interface for ROS Custom Messages のインストール|*
+% 
+% ※インストール済みの場合は、本作業は不要です。「4. ROS カスタムメッセージの作成」に進んでください。
+% 
+% Robotics System Toolbox に関連するアドオンをインストールするには、
+% 以下のコマンドを MATLAB コマンドウィンドウに入力するか、範囲選択して実行します。
+% 
+%   roboticsAddons();
+% 
+% アドオン エクスプローラが開いたら、Robotics System Toolbox Interface for ROS Custom Messages を選択します。
+% 
+% <<./images/addon_explore.PNG>>
+% 
+% <html><br></html>
+% 
+% ［インストール］をクリックします。
+% 
+% <<./images/install_if_ros_custom_msg.PNG>>
+% 
+% <html><br></html>
+% 
+% ［アドオン エクスプローラー］のセットアップ指示に引き続き従い、アドオンをインストールします。
+% ［承諾する］をクリックします。
+% 
+% <<./images/agree_license.PNG>>
+% 
+% <html><br></html>
+%
+% サードパーティ ソフトウェアの画面が出てきたら、［次へ］をクリックします。
+% 
+% <<./images/third_party_software.PNG>>
+%
+%%
+% |参考|
+% 
+% # <matlab:web(fullfile(docroot,'robotics/ug/install-robotics-system-toolbox-support-packages.html')) Install Robotics System Toolbox Add-ons （MATLABヘルプ）>
+% # <https://www.mathworks.com/help/releases/R2018a/robotics/ug/install-robotics-system-toolbox-support-packages.html Install Robotics System Toolbox Add-ons （MathWorks Webサイト）>
+% 
+%% 4. ROS カスタムメッセージの作成
+% 
+% *|a. カスタム メッセージ生成プログラムを実行します。|*
+%
+% 下記のコマンドを範囲選択して実行（F9）するか、MATLAB コマンドウィンドウに貼り付けて実行してください。
+% 
+%   autoware.createCustomMessages();    
+% 
+% *|b. javaclasspath.txt を編集します。|*
+% 
+% 以下の手順に従うか、
+% <matlab:autoware.editJavaClassPath() autoware.editJavaClassPath()> を実行します。
+% 
+% コマンドウィンドウの javaclasspath.txt リンクをクリックして、このファイルをエディターで開きます。
+% コマンドウィンドウに表示されている jar ファイルの場所をコピーし、それぞれ新しい行としてこのファイルに貼り付けます。
+% このファイルが存在しない場合、作成を求めるプロンプトが表示されます。
+% ［はい］ をクリックしてから、ファイルの場所をコピーしてこのファイルに貼り付けます。
+% 
+% <<./images/after_rosgenmsg.PNG>>
+% 
+% <html><br></html>
+% 
+% 行を追加した後の javaclasspath.txt は次のようになります。
+% このファイルには既に他のパスが存在している場合もあります。
+% 
+% <<./images/javaclasspath_txt.PNG>>
+% 
+% <html><br></html>
+% 
+% *|c. カスタムメッセージのフォルダを MATLAB 検索パスに追加します。|*
+%
+% 下記のコマンドを範囲選択して実行（F9）するか、MATLAB コマンドウィンドウに貼り付けて実行してください。
+% 
+%   autoware.addCustomMessageFolderToSearchPath();
+% 
+% |参考|
+%
+% # <matlab:web(fullfile(docroot,'robotics/ug/create-custom-messages-from-ros-package.html')) Create Custom Messages from ROS Package （MATLABヘルプ）>
+% # <https://www.mathworks.com/help/releases/R2018a/robotics/ug/create-custom-messages-from-ros-package.html Create Custom Messages from ROS Package （MathWorks Webサイト）>
+% 
+%% 5. Java ヒープメモリサイズの設定
+% 
+% Autowareでは、サイズが大きいROSメッセージを送受信することがあります。
+% そこで、Java ヒープメモリサイズを増やしておきます。
+% 調整後、［OK］ボタンをクリックして、［設定］ダイアログボックスを閉じます。
+% 
+% <matlab:preferences('一般') ［設定］ダイアログボックスを開き>、Java ヒープメモリサイズを調整します。
+% 
+% <<./images/java_heap_memory_preferences.PNG>>
+% 
+%% 6. MATLAB の再起動
+% 
+% MATLAB を再起動後、Autoware メッセージが登録されているか確認します。
+% 
+%   rosmsg list
+% 
+% Autoware メッセージが登録されていれば、インストールは終了です。
+% 
+% <<./images/autoware_messages.PNG>>
+% 
+##### SOURCE END #####
+--></body></html>
