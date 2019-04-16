@@ -11,13 +11,16 @@ mfile_path = fileparts(mfilename('fullpath'));
 custom_msgs_folder = fullfile(mfile_path(1:end-length('+autoware')), 'custom_msgs');
 msggen_folder = fullfile(custom_msgs_folder, 'matlab_gen', 'msggen');
 addpath(msggen_folder);
-savepath();
+status = savepath();
+if status == 1
+    warning('Unable to save current search path.');
+end
 
 locale = java.util.Locale.getDefault().getLanguage();
 if strcmp(locale, 'ja')
-    fprintf(1, '### %s をMATLAB検索パスに追加しました。\n', msggen_folder);
+    fprintf(1, '### "%s" をMATLAB検索パスに追加しました。\n', msggen_folder);
 else
-    fprintf(1, '### Completed add %s to the MATLAB search path.\n', msggen_folder);
+    fprintf(1, '### Completed add "%s" to the MATLAB search path.\n', msggen_folder);
 end
 
 % [EOF]
