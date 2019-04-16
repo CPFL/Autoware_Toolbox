@@ -3,3 +3,7 @@
 
 # Simulink
 slprj/
+
+# Autoware Toolbox
+custom_msgs/matlab_gen/
+docs/ja/helpsearch-v3/
