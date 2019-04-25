@@ -20,11 +20,12 @@ classdef WfSimulator < handle
         last_time
         pose
         th = 0.0;
+        tftree;
     end
     
     properties (Access=private, Constant)
         initialize_source = 'Rviz';
-        loop_rate = 50; % 50Hz
+        loop_rate = 10; % 10Hz
         accel_rate = 1.0;
     end
     
@@ -44,9 +45,10 @@ classdef WfSimulator < handle
             
             obj.current_velocity = rosmessage('geometry_msgs/Twist');
             obj.initial_pose = rosmessage('geometry_msgs/Pose');
-            obj.current_time = rostime("now");
-            obj.last_time = rostime("now");
-            obj.pose = rosmessage('geometry_msgs/Pose');
+            obj.current_time = rostime('now');
+            obj.last_time = rostime('now');
+            obj.pose = rosmessage('geometry_msgs/Pose');            
+            obj.tftree = robotics.ros.TransformationTree(obj.node);
         end
         
         function delete(obj)
@@ -81,7 +83,7 @@ classdef WfSimulator < handle
         end
         
         function initialposeCallback(obj, sub, msg) %#ok<INUSL>
-            trtree = robotics.ros.TransformationTree(obj.node);
+            trtree = obj.tftree;
             tf = getTransform(trtree, 'map', 'world', "Timeout", 5);
             obj.initial_pose.Position.X = msg.Pose.Pose.Position.X + tf.Transform.Translation.X;
             obj.initial_pose.Position.Y = msg.Pose.Pose.Position.Y + tf.Transform.Translation.Y;
@@ -111,7 +113,7 @@ classdef WfSimulator < handle
             
             vx = obj.current_velocity.Linear.X;
             vth = obj.current_velocity.Angular.Z;
-            obj.current_time = rostime("now");
+            obj.current_time = rostime('now');
             
             dt = seconds(obj.current_time - obj.last_time);
             delta_x = (vx * cos(obj.th)) * dt;
@@ -134,8 +136,7 @@ classdef WfSimulator < handle
             tform.Transform.Translation.Y = obj.pose.Position.Y;
             tform.Transform.Translation.Z = obj.pose.Position.Z;
             tform.Transform.Rotation = obj.pose.Orientation;
-            trtree = robotics.ros.TransformationTree(obj.node);
-            sendTransform(trtree, tform);
+            sendTransform(obj.tftree, tform);
             
             ps = rosmessage('geometry_msgs/PoseStamped');
             ps.Header.Stamp = obj.current_time;
