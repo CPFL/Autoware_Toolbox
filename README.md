@@ -12,7 +12,7 @@ Autoware Toolbox is a MATLAB/Simulink sample code suite for [Autoware](https://g
 ### Autoware Messages
 Autoware 1.8.0
 ### MATLAB/Simulink
-Created with R2018a
+Created with R2018b
 
 ## Provided Samples
 |module|node|Description|MATLAB Code<br>Support|Simulink Model<br>Support|Toolbox|
