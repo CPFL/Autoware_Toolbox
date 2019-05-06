@@ -41,4 +41,6 @@ Created with R2018b
 - [Japanese](docs/ja/helptoc_ja.md)
 
 ## Research Papers for Citation
+1. Shota Tokunaga, Yuki Horita, Yasuhiro Oda and Takuya Azumi, ``IDF-Autoware: Integrated Development Framework for ROS-based Self-driving Systems Using MATLAB/Simulink,'' In Proceedings of the Workshop of Autonomous Systems Design (ASD2019), Florence, Italy, Mar. 2019. [Link](http://drops.dagstuhl.de/opus/volltexte/2019/10336/)
 
+2. Shota Tokunaga, Noriyuki Ota, Yoshiharu Tange, Keita Miura, and Takuya Azumi, ``Demo Abstract: MATLAB/Simulink Benchmark Suite for ROS-based Self-driving System,'' Demo Session of the 10th ACM/IEEE International Conference on Cyber-Physical Systems (ICCPS2019),  Montreal, Canada, Apr. 2019.
