@@ -7,8 +7,7 @@ function [] = createCustomMessages()
 % Copyright 2019 NEXTY Electronics Corporation
 % 
 
-mfile_path = fileparts(mfilename('fullpath'));
-msg_folder_path = fullfile(mfile_path, '..', 'custom_msgs');
+msg_folder_path = fullfile(autoware.getRootDirectory(), 'custom_msgs');
 rosgenmsg(msg_folder_path);
 
 % [EOF]
