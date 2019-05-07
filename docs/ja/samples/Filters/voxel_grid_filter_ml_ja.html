@@ -1,0 +1,209 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>VoxelGridFilter.m &#12398;&#21033;&#29992;&#20363;</title><meta name="generator" content="MATLAB 9.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-05-07"><meta name="DC.source" content="voxel_grid_filter_ml_ja.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>VoxelGridFilter.m &#12398;&#21033;&#29992;&#20363;</h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">1. Autoware &#12398;&#36215;&#21205;</a></li><li><a href="#2">2. &#12471;&#12511;&#12517;&#12524;&#12540;&#12471;&#12519;&#12531;&#12463;&#12525;&#12483;&#12463;&#12398;&#35373;&#23450;&#65288;Runtime Manager &#12398; Simulation &#12479;&#12502;&#65289;</a></li><li><a href="#3">3. LiDAR &#20301;&#32622;&#35373;&#32622;&#12392;&#36554;&#20001;&#12514;&#12487;&#12523;&#12398;&#12525;&#12540;&#12489;&#65288;Runtime Manager &#12398; Setup &#12479;&#12502;&#65289;</a></li><li><a href="#4">4. &#22320;&#22259;&#12487;&#12540;&#12479;&#12392;TF&#12398;&#12525;&#12540;&#12489;&#65288;Runtime Manager &#12398; Map &#12479;&#12502;&#65289;</a></li><li><a href="#5">5. &#21205;&#20316;&#30906;&#35469;&#12395;&#24517;&#35201;&#12394;&#12494;&#12540;&#12489;&#12434;&#36215;&#21205;&#65288;Runtime Manager &#12398; Computing &#12479;&#12502;&#65289;</a></li><li><a href="#6">6. MATLAB &#12363;&#12425; Autoware&#65288;ROS &#12510;&#12473;&#12479;&#12540;&#65289;&#12408;&#12398;&#25509;&#32154;</a></li><li><a href="#7">7. VoxelGridFilter.m &#12398;&#36215;&#21205;</a></li><li><a href="#8">8. rosbag &#12398;&#20877;&#29983;&#65288;Runtime Manager &#12398; Simulation &#12479;&#12502;&#65289;</a></li><li><a href="#9">9. rviz &#12398;&#36215;&#21205;</a></li><li><a href="#10">10. &#12501;&#12451;&#12523;&#12479;&#20966;&#29702;&#12398;&#30906;&#35469;</a></li><li><a href="#11">11. &#32066;&#20102;&#20966;&#29702;</a></li></ul></div><h2 id="1">1. Autoware &#12398;&#36215;&#21205;</h2><p>Autoware &#12434;&#23455;&#34892;&#12375;&#12390; ROS &#12510;&#12473;&#12479;&#12540;&#12434;&#36215;&#21205;&#12375;&#12414;&#12377;&#12290;</p><p><img vspace="5" hspace="5" src="images/run_autoware.png" alt=""> </p><p>Runtime Manager &#12364;&#31435;&#12385;&#19978;&#12364;&#12426;&#12414;&#12377;&#12290;</p><p><img vspace="5" hspace="5" src="images/runtime_manager.png" alt=""> </p><h2 id="2">2. &#12471;&#12511;&#12517;&#12524;&#12540;&#12471;&#12519;&#12531;&#12463;&#12525;&#12483;&#12463;&#12398;&#35373;&#23450;&#65288;Runtime Manager &#12398; Simulation &#12479;&#12502;&#65289;</h2><p>Runtime Manager &#12398; Simulation &#12479;&#12502;&#12434;&#38283;&#12365;&#12414;&#12377;&#12290; &#12300;Ref&#12301;&#12508;&#12479;&#12531;&#12434;&#12463;&#12522;&#12483;&#12463;&#12375;&#12390;&#12289;&#20877;&#29983;&#12377;&#12427; rosbag &#12501;&#12449;&#12452;&#12523;&#12434;&#35373;&#23450;&#12375;&#12414;&#12377;&#12290;</p><p><img vspace="5" hspace="5" src="images/set_rosbag.png" alt=""> </p><p>&#12300;Play&#12301;&#12508;&#12479;&#12531;&#12434;&#12463;&#12522;&#12483;&#12463;&#12375;&#12390;rosbag &#12434;&#20877;&#29983;&#24460;&#65288;&#19979;&#22259;&#9312;&#65289;&#12289;&#12300;Pause&#12301;&#12508;&#12479;&#12531;&#12434;&#12463;&#12522;&#12483;&#12463;&#12375;&#19968;&#26178;&#20572;&#27490;&#12373;&#12379;&#12414;&#12377;&#65288;&#19979;&#22259;&#9313;&#65289;&#12290; &#12371;&#12428;&#12395;&#12424;&#12426;&#12471;&#12511;&#12517;&#12524;&#12540;&#12471;&#12519;&#12531;&#12463;&#12525;&#12483;&#12463;&#12364;&#12458;&#12531;&#12395;&#12394;&#12426;&#12414;&#12377;&#12290;</p><p><img vspace="5" hspace="5" src="images/simulation_clock_on.png" alt=""> </p><h2 id="3">3. LiDAR &#20301;&#32622;&#35373;&#32622;&#12392;&#36554;&#20001;&#12514;&#12487;&#12523;&#12398;&#12525;&#12540;&#12489;&#65288;Runtime Manager &#12398; Setup &#12479;&#12502;&#65289;</h2><p>Runtime Manager &#12398; Setup &#12479;&#12502;&#12434;&#38283;&#12365;&#12414;&#12377;&#12290; Localizer&#37096; &#12391; Velodyne &#12434;&#36984;&#25246;&#12375;&#12414;&#12377;&#12290;</p><p><img vspace="5" hspace="5" src="images/set_localizer_velodyne.png" alt=""> </p><p>Baselink to Localizer &#37096;&#12398;&#12497;&#12521;&#12513;&#12540;&#12479;&#12434;&#20197;&#19979;&#12398;&#12424;&#12358;&#12395;&#35373;&#23450;&#12375;&#12289;&#12300;TF&#12301;&#12508;&#12479;&#12531;&#12434;&#12463;&#12522;&#12483;&#12463;&#12375;&#12414;&#12377;&#12290;</p><p><img vspace="5" hspace="5" src="images/set_baselink_to_localizer.png" alt=""> </p><p>Vehicle Model &#37096;&#12398;&#12300;Vehicle Model&#12301;&#12508;&#12479;&#12531;&#12434;&#12463;&#12522;&#12483;&#12463;&#12375;&#12390;&#12289;&#36554;&#20001;&#12514;&#12487;&#12523;&#12434;&#12525;&#12540;&#12489;&#12375;&#12414;&#12377;&#12290; &#12501;&#12449;&#12452;&#12523;&#36984;&#25246;&#37096;&#12434;&#31354;&#27396;&#12395;&#12375;&#12390;&#12362;&#12367;&#12371;&#12392;&#12391;&#12289;&#12487;&#12501;&#12457;&#12523;&#12488;&#12398;&#36554;&#20001;&#12514;&#12487;&#12523;&#12364;&#12525;&#12540;&#12489;&#12373;&#12428;&#12414;&#12377;&#12290;</p><p><img vspace="5" hspace="5" src="images/load_vehicle_model.png" alt=""> </p><h2 id="4">4. &#22320;&#22259;&#12487;&#12540;&#12479;&#12392;TF&#12398;&#12525;&#12540;&#12489;&#65288;Runtime Manager &#12398; Map &#12479;&#12502;&#65289;</h2><p>Runtime Manager &#12398; Map &#12479;&#12502;&#12434;&#38283;&#12365;&#12414;&#12377;&#12290;</p><div><ol><li>&#12300;Point Cloud&#12301;&#12508;&#12479;&#12531;&#12398;&#21491;&#20596;&#12398;&#12300;Ref&#12301;&#12508;&#12479;&#12531;&#12434;&#12463;&#12522;&#12483;&#12463;&#12375;&#12390;&#12289;&#33258;&#24049;&#20301;&#32622;&#25512;&#23450;&#12395;&#20351;&#29992;&#12377;&#12427; pcd &#12501;&#12449;&#12452;&#12523;&#12434;&#20840;&#12390;&#36984;&#25246;&#12375;&#12289; &#12300;Point Cloud&#12301;&#12508;&#12479;&#12531;&#12434;&#12463;&#12522;&#12483;&#12463;&#12375;&#12414;&#12377;&#12290;</li><li>&#12300;TF&#12301;&#12508;&#12479;&#12531;&#12398;&#21491;&#20596;&#12300;Ref&#12301;&#12508;&#12479;&#12531;&#12434;&#12463;&#12522;&#12483;&#12463;&#12375;&#12390;&#12289;pcd &#12487;&#12540;&#12479;&#12395;&#23550;&#24540;&#12377;&#12427; TF &#24773;&#22577;&#12364;&#35373;&#23450;&#12373;&#12428;&#12383; launch &#12501;&#12449;&#12452;&#12523;&#12434;&#36984;&#25246;&#12375;&#12289; &#12300;TF&#12301;&#12508;&#12479;&#12531;&#12434;&#12463;&#12522;&#12483;&#12463;&#12375;&#12414;&#12377;&#12290;</li></ol></div><p><img vspace="5" hspace="5" src="images/map_tab.png" alt=""> </p><h2 id="5">5. &#21205;&#20316;&#30906;&#35469;&#12395;&#24517;&#35201;&#12394;&#12494;&#12540;&#12489;&#12434;&#36215;&#21205;&#65288;Runtime Manager &#12398; Computing &#12479;&#12502;&#65289;</h2><pre>Runtime Manager &#12398; Computing &#12479;&#12502;&#12434;&#38283;&#12365;&#12414;&#12377;&#12290;
+nmea2tfpose &#12398; app &#12434;&#12463;&#12522;&#12483;&#12463;&#12375;&#12390;&#35373;&#23450;&#30011;&#38754;&#12434;&#38283;&#12365;&#12289;Plane number &#12434;&#12300;7&#12301;&#12395;&#35373;&#23450;&#24460;&#12289;&#12300;OK&#12301;&#12508;&#12479;&#12531;&#12434;&#12463;&#12522;&#12483;&#12463;&#12375;&#12414;&#12377;&#12290;</pre><p><img vspace="5" hspace="5" src="images/set_plane_number.png" alt=""> </p><p>ndt_matching &#12398; app &#12434;&#12463;&#12522;&#12483;&#12463;&#12375;&#12390;&#35373;&#23450;&#30011;&#38754;&#12434;&#38283;&#12365;&#12289;&#12300;GNSS&#12301;&#12434;&#36984;&#25246;&#24460;&#12289;&#12300;OK&#12301;&#12508;&#12479;&#12531;&#12434;&#12463;&#12522;&#12483;&#12463;&#12375;&#12414;&#12377;&#12290;</p><p><img vspace="5" hspace="5" src="images/ndt_matching_app.png" alt=""> </p><p>nmea2tfpose &#12392; ndt_matching &#12398;&#12481;&#12455;&#12483;&#12463;&#12508;&#12483;&#12463;&#12473;&#12395;&#12481;&#12455;&#12483;&#12463;&#12434;&#20837;&#12428;&#12414;&#12377;&#12290;</p><p><img vspace="5" hspace="5" src="images/set_computing_tab.png" alt=""> </p><h2 id="6">6. MATLAB &#12363;&#12425; Autoware&#65288;ROS &#12510;&#12473;&#12479;&#12540;&#65289;&#12408;&#12398;&#25509;&#32154;</h2><p>MATLAB &#12391; rosinit &#12467;&#12510;&#12531;&#12489;&#12434;&#20351;&#29992;&#12375;&#12390; ROS &#12510;&#12473;&#12479;&#12540;&#12395;&#25509;&#32154;&#12375;&#12414;&#12377;&#12290;</p><pre class="codeinput">rosinit(<span class="string">'http://169.254.66.185:11311'</span>);
+</pre><h2 id="7">7. VoxelGridFilter.m &#12398;&#36215;&#21205;</h2><p>VoxelGridFilter.m &#12463;&#12521;&#12473;&#12501;&#12449;&#12452;&#12523;&#12364;&#12354;&#12427;&#12501;&#12457;&#12523;&#12480;&#12434; MATLAB &#26908;&#32034;&#12497;&#12473;&#12395;&#30331;&#37682;&#24460;&#12289; VoxelGridFilter &#12398;&#12452;&#12531;&#12473;&#12479;&#12531;&#12473;&#12434;&#29983;&#25104;&#12375;&#12289;&#12501;&#12451;&#12523;&#12479;&#20966;&#29702;&#12434;&#23455;&#34892;&#12375;&#12414;&#12377;&#12290;</p><pre class="codeinput">voxel_grid_filter_folder = fullfile(autoware.getRootDirectory(), <span class="keyword">...</span>
+                        <span class="string">'benchmark'</span>, <span class="string">'sensing'</span>, <span class="string">'filters'</span>, <span class="string">'points_downsampler'</span>, <span class="keyword">...</span>
+                        <span class="string">'voxel_grid_filter'</span>);
+addpath(voxel_grid_filter_folder);
+voxel_grid_filter_obj = VoxelGridFilter();
+</pre><h2 id="8">8. rosbag &#12398;&#20877;&#29983;&#65288;Runtime Manager &#12398; Simulation &#12479;&#12502;&#65289;</h2><p>&#12300;Pause&#12301;&#12508;&#12479;&#12531;&#12434;&#12463;&#12522;&#12483;&#12463;&#12375;&#12390;&#12289;rosbag &#12434;&#20877;&#29983;&#12375;&#12414;&#12377;&#12290;</p><p><img vspace="5" hspace="5" src="images/replay_rosbag.png" alt=""> </p><h2 id="9">9. rviz &#12398;&#36215;&#21205;</h2><p>Runtime Manager &#12398; RViz &#12508;&#12479;&#12531;&#12434;&#12463;&#12522;&#12483;&#12463;&#12375;&#12390; rviz &#12434;&#36215;&#21205;&#12375;&#12414;&#12377;&#12290;</p><p><img vspace="5" hspace="5" src="images/click_rviz.png" alt=""> </p><p>rviz &#12364;&#36215;&#21205;&#12375;&#12383;&#12425;&#12289;&#12513;&#12491;&#12517;&#12540;&#12398;&#65339;File&#65341;-&#65339;Open Config&#65341;&#12363;&#12425;&#12300;Autoware/ros/src/.config/rviz/default.rviz&#12301;&#12434;&#36984;&#25246;&#12375;&#12414;&#12377;&#12290; Runtime Manager &#12391;&#12525;&#12540;&#12489;&#12375;&#12383;&#12487;&#12540;&#12479;&#12392; rosbag &#12398;&#12487;&#12540;&#12479;&#12364;&#34920;&#31034;&#12373;&#12428;&#12414;&#12377;&#12290;</p><p><img vspace="5" hspace="5" src="images/voxel_grid_filter_ml/show_rviz.png" alt=""> </p><h2 id="10">10. &#12501;&#12451;&#12523;&#12479;&#20966;&#29702;&#12398;&#30906;&#35469;</h2><p>rviz &#12398; Points Cluster &#12398; Topic &#12434;&#12300;/points_raw&#12301;&#12395;&#35373;&#23450;&#12375;&#12289;&#12501;&#12451;&#12523;&#12479;&#20966;&#29702;&#21069;&#12398;&#28857;&#32676;&#12434;&#30906;&#35469;&#12375;&#12414;&#12377;&#12290;</p><p><img vspace="5" hspace="5" src="images/voxel_grid_filter_ml/points_raw.png" alt=""> </p><p>&#27425;&#12395;&#12289;Points Cluster &#12398; Topic &#12434;&#12300;/filtered_points&#12301;&#12395;&#35373;&#23450;&#22793;&#26356;&#12375;&#12289;&#12501;&#12451;&#12523;&#12479;&#20966;&#29702;&#24460;&#12398;&#28857;&#32676;&#12434;&#30906;&#35469;&#12375;&#12414;&#12377;&#12290;</p><p><img vspace="5" hspace="5" src="images/voxel_grid_filter_ml/filtered_points.png" alt=""> </p><p>&#12480;&#12454;&#12531;&#12469;&#12531;&#12503;&#12522;&#12531;&#12464;&#12373;&#12428;&#12390;&#12356;&#12427;&#12371;&#12392;&#12364;&#30906;&#35469;&#12391;&#12365;&#12414;&#12377;&#12290;</p><p>&#26412;&#20363;&#23455;&#34892;&#26178;&#12398;&#12494;&#12540;&#12489;&#12464;&#12521;&#12501;&#30011;&#20687;&#12434;&#30906;&#35469;&#12377;&#12427;&#12395;&#12399; <a href="images/voxel_grid_filter_ml/rosgraph_voxel_grid_filter_ml.png">&#12371;&#12371;</a> &#12434;&#12289; SVG&#12501;&#12449;&#12452;&#12523;&#12434;&#30906;&#35469;&#12377;&#12427;&#12395;&#12399; <a href="images/voxel_grid_filter_ml/rosgraph_voxel_grid_filter_ml.svg">&#12371;&#12371;</a> &#12434;&#12463;&#12522;&#12483;&#12463;&#12375;&#12390;&#12367;&#12384;&#12373;&#12356;&#12290; VoxelGridFilter.m &#12391;&#29983;&#25104;&#12373;&#12428;&#12427;&#12494;&#12540;&#12489;&#12399; /voxel_grid_filter_ml &#12391;&#12377;&#12290;</p><h2 id="11">11. &#32066;&#20102;&#20966;&#29702;</h2><p>&#19979;&#35352;&#12398;&#12467;&#12510;&#12531;&#12489;&#12434;&#23455;&#34892;&#12375;&#12390;&#32066;&#20102;&#12375;&#12414;&#12377;&#12290;</p><pre class="codeinput">voxel_grid_filter_obj.delete();
+rosshutdown();
+rmpath(voxel_grid_filter_folder);
+clear <span class="string">voxel_grid_filter_obj</span> <span class="string">voxel_grid_filter_folder</span>;
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% VoxelGridFilter.m の利用例
+% 
+%% 1. Autoware の起動
+% 
+% Autoware を実行して ROS マスターを起動します。
+% 
+% <<images/run_autoware.png>>
+% 
+% Runtime Manager が立ち上がります。
+% 
+% <<images/runtime_manager.png>>
+% 
+%% 2. シミュレーションクロックの設定（Runtime Manager の Simulation タブ）
+% 
+% Runtime Manager の Simulation タブを開きます。
+% 「Ref」ボタンをクリックして、再生する rosbag ファイルを設定します。
+% 
+% <<images/set_rosbag.png>>
+% 
+% 「Play」ボタンをクリックしてrosbag を再生後（下図①）、「Pause」ボタンをクリックし一時停止させます（下図②）。
+% これによりシミュレーションクロックがオンになります。
+% 
+% <<images/simulation_clock_on.png>>
+% 
+%% 3. LiDAR 位置設置と車両モデルのロード（Runtime Manager の Setup タブ）
+% 
+% Runtime Manager の Setup タブを開きます。
+% Localizer部 で Velodyne を選択します。
+% 
+% <<images/set_localizer_velodyne.png>>
+% 
+% Baselink to Localizer 部のパラメータを以下のように設定し、「TF」ボタンをクリックします。
+% 
+% <<images/set_baselink_to_localizer.png>>
+% 
+% Vehicle Model 部の「Vehicle Model」ボタンをクリックして、車両モデルをロードします。  
+% ファイル選択部を空欄にしておくことで、デフォルトの車両モデルがロードされます。
+% 
+% <<images/load_vehicle_model.png>>
+% 
+%% 4. 地図データとTFのロード（Runtime Manager の Map タブ）
+% 
+% Runtime Manager の Map タブを開きます。
+% 
+% # 「Point Cloud」ボタンの右側の「Ref」ボタンをクリックして、自己位置推定に使用する pcd ファイルを全て選択し、
+% 「Point Cloud」ボタンをクリックします。
+% # 「TF」ボタンの右側「Ref」ボタンをクリックして、pcd データに対応する TF 情報が設定された launch ファイルを選択し、
+% 「TF」ボタンをクリックします。
+% 
+% <<images/map_tab.png>>
+% 
+%% 5. 動作確認に必要なノードを起動（Runtime Manager の Computing タブ）
+% 
+%  Runtime Manager の Computing タブを開きます。
+% nmea2tfpose の app をクリックして設定画面を開き、Plane number を「7」に設定後、「OK」ボタンをクリックします。
+% 
+% <<images/set_plane_number.png>>
+% 
+% ndt_matching の app をクリックして設定画面を開き、「GNSS」を選択後、「OK」ボタンをクリックします。
+% 
+% <<images/ndt_matching_app.png>>
+% 
+% nmea2tfpose と ndt_matching のチェックボックスにチェックを入れます。  
+% 
+% <<images/set_computing_tab.png>>
+% 
+%% 6. MATLAB から Autoware（ROS マスター）への接続
+% 
+% MATLAB で rosinit コマンドを使用して ROS マスターに接続します。  
+% 
+rosinit('http://169.254.66.185:11311');
+
+%% 7. VoxelGridFilter.m の起動
+% 
+% VoxelGridFilter.m クラスファイルがあるフォルダを MATLAB 検索パスに登録後、
+% VoxelGridFilter のインスタンスを生成し、フィルタ処理を実行します。
+% 
+voxel_grid_filter_folder = fullfile(autoware.getRootDirectory(), ...
+                        'benchmark', 'sensing', 'filters', 'points_downsampler', ...
+                        'voxel_grid_filter');
+addpath(voxel_grid_filter_folder);
+voxel_grid_filter_obj = VoxelGridFilter();
+
+%% 8. rosbag の再生（Runtime Manager の Simulation タブ）
+% 
+% 「Pause」ボタンをクリックして、rosbag を再生します。
+% 
+% <<images/replay_rosbag.png>>
+% 
+%% 9. rviz の起動
+% 
+% Runtime Manager の RViz ボタンをクリックして rviz を起動します。  
+% 
+% <<images/click_rviz.png>>
+% 
+% rviz が起動したら、メニューの［File］-［Open Config］から「Autoware/ros/src/.config/rviz/default.rviz」を選択します。
+% Runtime Manager でロードしたデータと rosbag のデータが表示されます。
+% 
+% <<images/voxel_grid_filter_ml/show_rviz.png>>
+% 
+%% 10. フィルタ処理の確認
+% 
+% rviz の Points Cluster の Topic を「/points_raw」に設定し、フィルタ処理前の点群を確認します。
+% 
+% <<images/voxel_grid_filter_ml/points_raw.png>>
+% 
+% 次に、Points Cluster の Topic を「/filtered_points」に設定変更し、フィルタ処理後の点群を確認します。
+% 
+% <<images/voxel_grid_filter_ml/filtered_points.png>>
+% 
+% ダウンサンプリングされていることが確認できます。
+% 
+% 本例実行時のノードグラフ画像を確認するには
+% <images/voxel_grid_filter_ml/rosgraph_voxel_grid_filter_ml.png ここ> を、
+% SVGファイルを確認するには
+% <images/voxel_grid_filter_ml/rosgraph_voxel_grid_filter_ml.svg ここ> をクリックしてください。
+% VoxelGridFilter.m で生成されるノードは /voxel_grid_filter_ml です。
+% 
+%% 11. 終了処理
+% 
+% 下記のコマンドを実行して終了します。  
+% 
+voxel_grid_filter_obj.delete();
+rosshutdown();
+rmpath(voxel_grid_filter_folder);
+clear voxel_grid_filter_obj voxel_grid_filter_folder;
+##### SOURCE END #####
+--></body></html>

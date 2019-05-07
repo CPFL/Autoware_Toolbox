@@ -10,7 +10,7 @@
 |Mission Planning|[Lane Stop](./Planning/lane_stop_ml_ja.html)|Selecting waypoints according to the signal color.|
 |Motion Planning|[Path Select](./Planning/path_select_ml_ja.html)|Generating final waypoints from temporal waypoints.|
 |   |[Wf Simulator](./Planning/wf_simulator_ml_ja.md)| |
-|Filters|[Voxel Grid Filter](./Filters/demo_voxel_grid_filter_ml_ja.html)|Downsampling point cloud using a voxel grid filter.|
+|Filters|[Voxel Grid Filter](./Filters/voxel_grid_filter_ml_ja.html)|Downsampling point cloud using a voxel grid filter.|
 |	|[Random Filter](./Filters/demo_random_filter_ml_ja.html)|Downsampling point cloud with random sampling and without replacement.|
 |	|[Nonuniform Voxel Grid Filte](./Filters/nonuniformgrid_filter_ml_ja.html)|Downsampling point cloud using nonuniform voxel grid filter.|
 |	|[Fog rectification](./Filters/fog_rectification_ml_ja.html)|Producing defogged image.|
