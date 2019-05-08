@@ -14,12 +14,13 @@ jar_file_locations{1} = fullfile(jar_folder, 'autoware_msgs-1.8.0.jar');
 jar_file_locations{2} = fullfile(jar_folder, 'dbw_mkz_msgs-1.8.0.jar');
 jar_file_locations{3} = fullfile(jar_folder, 'jsk_recognition_msgs-1.2.5.jar');
 jar_file_locations{4} = fullfile(jar_folder, 'vector_map_msgs-1.8.0.jar');
+jar_file_locations{5} = fullfile(jar_folder, 'visualization_msgs-1.12.7.jar');
 
 javaclasspath_txt = fullfile(prefdir(), 'javaclasspath.txt');
 type = exist(javaclasspath_txt, 'file');
 if type ~= 2
     fmt = sprintf('%%s\n');
-    new_file = jar_file_locations;
+    new_file = [{'<before>'}, jar_file_locations];
 else
     fmt = sprintf('\n%%s');
     A = importdata(javaclasspath_txt);
