@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>underConstruction</title><meta name="generator" content="MATLAB 9.4"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-04-02"><meta name="DC.source" content="underConstruction.m"><style type="text/css">
+      --><title>pure_pursuit_sl.slx &#12398;&#21033;&#29992;&#20363;</title><meta name="generator" content="MATLAB 9.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-05-11"><meta name="DC.source" content="pure_pursuit_sl_ja.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -66,11 +66,156 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><p><i><b><tt>Under Construction</tt></b></i></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018a</a><br></p></div><!--
+  </style></head><body><div class="content"><h1>pure_pursuit_sl.slx &#12398;&#21033;&#29992;&#20363;</h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">1. Autoware &#12398;&#36215;&#21205;</a></li><li><a href="#2">2. Runtime Manager &#12398; Setup &#12479;&#12502;&#20869;&#12398;&#35373;&#23450;</a></li><li><a href="#3">3. Runtime Manager &#12398; Map &#12479;&#12502;&#20869;&#12398;&#35373;&#23450;</a></li><li><a href="#4">4. rviz &#12398;&#36215;&#21205;</a></li><li><a href="#5">5. Runtime Manager &#12398; Computing &#12479;&#12502;&#20869;&#12398;&#35373;&#23450;</a></li><li><a href="#6">6. MATLAB &#12363;&#12425; Autoware&#65288;ROS &#12510;&#12473;&#12479;&#12540;&#65289;&#12408;&#12398;&#25509;&#32154;</a></li><li><a href="#8">7. Simulink &#12391;&#20316;&#25104;&#12375;&#12383; pure_pursuit &#12434;&#36215;&#21205;</a></li><li><a href="#10">8. Simulink &#12391;&#20316;&#25104;&#12375;&#12383; pure_pursuit &#12434;&#23455;&#34892;</a></li><li><a href="#11">8. rviz &#12391;&#36554;&#20001;&#12398;&#21021;&#26399;&#20301;&#32622;&#12434;&#35373;&#23450;</a></li><li><a href="#12">9. &#32076;&#36335;&#36861;&#24467;&#12398;&#38283;&#22987;</a></li><li><a href="#13">10. &#32066;&#20102;&#20966;&#29702;</a></li></ul></div><h2 id="1">1. Autoware &#12398;&#36215;&#21205;</h2><p>Autoware &#12434;&#23455;&#34892;&#12375;&#12390; ROS &#12510;&#12473;&#12479;&#12540;&#12434;&#36215;&#21205;&#12375;&#12414;&#12377;&#12290;</p><p><img vspace="5" hspace="5" src="../images/run_autoware.png" alt=""> </p><p>Runtime Manager &#12364;&#31435;&#12385;&#19978;&#12364;&#12426;&#12414;&#12377;&#12290;</p><p><img vspace="5" hspace="5" src="../images/runtime_manager.png" alt=""> </p><p><br></p><h2 id="2">2. Runtime Manager &#12398; Setup &#12479;&#12502;&#20869;&#12398;&#35373;&#23450;</h2><p>&#36554;&#20001;&#12514;&#12487;&#12523;&#12434;&#12525;&#12540;&#12489;&#12375;&#12414;&#12377;&#12290;</p><p><img vspace="5" hspace="5" src="../images/setup_tab_load_vehicle_model.png" alt=""> </p><p><br></p><h2 id="3">3. Runtime Manager &#12398; Map &#12479;&#12502;&#20869;&#12398;&#35373;&#23450;</h2><p>Vector Map &#12392; TF &#12434;&#35501;&#12415;&#36796;&#12415;&#12414;&#12377;&#12290;</p><p><img vspace="5" hspace="5" src="../images//map_tab_load_vectormap_tf.png" alt=""> </p><p><br></p><h2 id="4">4. rviz &#12398;&#36215;&#21205;</h2><p>Runtime Manager &#12398; RViz &#12508;&#12479;&#12531;&#12434;&#12463;&#12522;&#12483;&#12463;&#12375;&#12390; rviz &#12434;&#36215;&#21205;&#12375;&#12414;&#12377;&#12290;</p><p><img vspace="5" hspace="5" src="../images/click_rviz.png" alt=""> </p><p>rviz &#12364;&#36215;&#21205;&#12375;&#12383;&#12425;&#12289;&#12513;&#12491;&#12517;&#12540;&#12363;&#12425;&#65339;File&#65341;-&#65339;Open Config&#65341;&#12434;&#36984;&#25246;&#12375;&#12414;&#12377;&#12290;</p><p><img vspace="5" hspace="5" src="../images/rviz_file_open_config.png" alt=""> </p><p>&#12501;&#12449;&#12452;&#12523;&#36984;&#25246;&#30011;&#38754;&#12391;&#12300;~/Autoware/ros/src/.config/rviz/default.rviz&#12301;&#12434;&#36984;&#25246;&#12375;&#12414;&#12377;&#12290;</p><p><img vspace="5" hspace="5" src="../images/choose_file_to_open.png" alt=""> </p><p>Config &#35373;&#23450;&#24460;&#12289;rviz &#30011;&#38754;&#12395;&#12399; Vector Map &#12364;&#34920;&#31034;&#12373;&#12428;&#12414;&#12377;&#12290;</p><p><img vspace="5" hspace="5" src="../images/show_vectormap.png" alt=""> </p><p><br></p><h2 id="5">5. Runtime Manager &#12398; Computing &#12479;&#12502;&#20869;&#12398;&#35373;&#23450;</h2><p>(1) waypoint_loader &#12398; app &#12434;&#12463;&#12522;&#12483;&#12463;&#12375;&#12390;&#12289;&#32076;&#36335;&#12364;&#20445;&#23384;&#12373;&#12428;&#12390;&#12356;&#12427; csv &#12501;&#12449;&#12452;&#12523;&#12434;&#25351;&#23450;&#12375;&#12414;&#12377;&#12290;</p><p><img vspace="5" hspace="5" src="../images/waypoint_loader.png" alt=""> </p><p>&#12501;&#12449;&#12452;&#12523;&#12434;&#25351;&#23450;&#12375;&#12383;&#12425;&#12289;Computing &#12479;&#12502;&#20869;&#12398; waypoint_loader &#12398;&#12481;&#12455;&#12483;&#12463;&#12508;&#12483;&#12463;&#12473;&#12395;&#12481;&#12455;&#12483;&#12463;&#12434;&#20837;&#12428;&#12414;&#12377;&#12290;</p><p>(2) vel_pose_connect &#12398; app &#12434;&#12463;&#12522;&#12483;&#12463;&#12375;&#12390;&#12289;&#12300;Simulation Mode&#12301;&#12395;&#12481;&#12455;&#12483;&#12463;&#12434;&#20837;&#12428;&#12414;&#12377;&#12290;</p><p><img vspace="5" hspace="5" src="images/vel_pose_connect.png" alt=""> </p><p>Simulation Mode &#35373;&#23450;&#24460;&#12289;Computing &#12479;&#12502;&#20869;&#12398; vel_pose_connect &#12398;&#12481;&#12455;&#12483;&#12463;&#12508;&#12483;&#12463;&#12473;&#12395;&#12481;&#12455;&#12483;&#12463;&#12434;&#20837;&#12428;&#12414;&#12377;&#12290;</p><p>(3) wf_simulator &#12398; app &#12434;&#12463;&#12522;&#12483;&#12463;&#12375;&#12390;&#12289;&#12300;Initialize Source&#12301;&#12434;&#12300;Rviz&#12301;&#12395;&#35373;&#23450;&#12375;&#12414;&#12377;&#12290;</p><p><img vspace="5" hspace="5" src="images/pure_pursuit/wf_simulator_app.png" alt=""> </p><p>&#12300;Initialize Source&#12301;&#12434;&#12300;Rviz&#12301;&#12395;&#35373;&#23450;&#24460;&#12289;Computing &#12479;&#12502;&#20869;&#12398; wf_simulator &#12398;&#12481;&#12455;&#12483;&#12463;&#12508;&#12483;&#12463;&#12473;&#12395;&#12481;&#12455;&#12483;&#12463;&#12434;&#20837;&#12428;&#12414;&#12377;&#12290;</p><p>(4) lane_rule&#12289;lane_stop&#12289;lane_select&#12289;obstacle_avoid&#12289;velocity_set&#12289;twist_filter&#12289;wf_simulator &#12398;   &#12481;&#12455;&#12483;&#12463;&#12508;&#12483;&#12463;&#12473;&#12395;&#12481;&#12455;&#12483;&#12463;&#12434;&#20837;&#12428;&#12390;&#12289;&#12371;&#12428;&#12425;&#12398;&#12494;&#12540;&#12489;&#12434;&#36215;&#21205;&#12375;&#12414;&#12377;&#12290; &#35373;&#23450;&#24460;&#12398; Computing &#12479;&#12502;&#12399;&#19979;&#22259;&#12398;&#12424;&#12358;&#12395;&#12394;&#12426;&#12414;&#12377;&#12290;</p><p><img vspace="5" hspace="5" src="images/pure_pursuit/computing_tab.png" alt=""> </p><p><br></p><h2 id="6">6. MATLAB &#12363;&#12425; Autoware&#65288;ROS &#12510;&#12473;&#12479;&#12540;&#65289;&#12408;&#12398;&#25509;&#32154;</h2><p>MATLAB &#12391; rosinit &#12467;&#12510;&#12531;&#12489;&#12434;&#20351;&#29992;&#12375;&#12390; ROS &#12510;&#12473;&#12479;&#12540;&#12395;&#25509;&#32154;&#12375;&#12414;&#12377;&#12290; rosinit &#12398;&#24341;&#25968;&#12399;&#12372;&#33258;&#36523;&#12398;&#29872;&#22659;&#12395;&#21512;&#12431;&#12379;&#12390;&#35373;&#23450;&#12375;&#12390;&#12367;&#12384;&#12373;&#12356;&#12290;</p><pre class="codeinput">rosinit();
+</pre><p><img vspace="5" hspace="5" src="../images/rosinit.png" alt=""> </p><h2 id="8">7. Simulink &#12391;&#20316;&#25104;&#12375;&#12383; pure_pursuit &#12434;&#36215;&#21205;</h2><p>pure_pursuit &#12398; Simulink &#12514;&#12487;&#12523;&#12364;&#12354;&#12427;&#12501;&#12457;&#12523;&#12480;&#12434;MATLAB&#26908;&#32034;&#12497;&#12473;&#12395;&#30331;&#37682;&#24460;&#12289; pure_pursuit &#12398; Simulink &#12514;&#12487;&#12523;&#12434;&#38283;&#12365;&#12414;&#12377;&#12290;</p><pre class="codeinput">pure_pursuit_folder = fullfile(autoware.getRootDirectory(), <span class="keyword">...</span>
+                        <span class="string">'benchmark'</span>, <span class="string">'computing'</span>, <span class="string">'planning'</span>, <span class="string">'motion'</span>, <span class="string">'waypoint_follower'</span>, <span class="string">'pure_pursuit'</span>);
+addpath(pure_pursuit_folder);
+model = <span class="string">'pure_pursuit_sl'</span>;
+open_system(model);
+</pre><p><img vspace="5" hspace="5" src="images/pure_pursuit/pure_pursuit_sl_top.png" alt=""> </p><h2 id="10">8. Simulink &#12391;&#20316;&#25104;&#12375;&#12383; pure_pursuit &#12434;&#23455;&#34892;</h2><p>pure_pursuit &#12398; Simulink &#12514;&#12487;&#12523;&#12434;&#23455;&#34892;&#12375;&#12414;&#12377;&#12290;</p><pre class="codeinput">set_param(model, <span class="string">'SimulationCommand'</span>, <span class="string">'Start'</span>);
+</pre><h2 id="11">8. rviz &#12391;&#36554;&#20001;&#12398;&#21021;&#26399;&#20301;&#32622;&#12434;&#35373;&#23450;</h2><pre>(1) rviz &#12398;&#12300;2D Pose Estimate&#12301;&#12434;&#12463;&#12522;&#12483;&#12463;&#12375;&#12414;&#12377;&#12290;
+(2) &#12381;&#12398;&#24460;&#12289;&#36554;&#20001;&#12398;&#21021;&#26399;&#20301;&#32622;&#12363;&#12425;&#31227;&#21205;&#26041;&#21521;&#12395;&#12510;&#12454;&#12473;&#12489;&#12521;&#12483;&#12464;&#12375;&#12390;&#30690;&#21360;&#12434;&#35373;&#23450;&#12375;&#12414;&#12377;&#12290;</pre><p><img vspace="5" hspace="5" src="images/2D_Pose_Estimate.png" alt=""> </p><p><br></p><h2 id="12">9. &#32076;&#36335;&#36861;&#24467;&#12398;&#38283;&#22987;</h2><p>rviz &#12391;&#21021;&#26399;&#20301;&#32622;&#12434;&#35373;&#23450;&#24460;&#12375;&#12400;&#12425;&#12367;&#12377;&#12427;&#12392;&#12289;&#32076;&#36335;&#36861;&#24467;&#12364;&#22987;&#12414;&#12426;&#12414;&#12377;&#12290;</p><p><img vspace="5" hspace="5" src="images/result_waypoint_follower.png" alt=""> </p><p>&#26412;&#20363;&#23455;&#34892;&#26178;&#12398;&#12494;&#12540;&#12489;&#12464;&#12521;&#12501;&#12434;&#30906;&#35469;&#12377;&#12427;&#12395;&#12399; <a href="./images/pure_pursuit/rosgraph_pure_pursuit.png">&#12371;&#12371;</a>&#12434;&#12463;&#12522;&#12483;&#12463;&#12375;&#12390;&#12367;&#12384;&#12373;&#12356;&#12290; pure_pursuit_sl &#12391;&#29983;&#25104;&#12373;&#12428;&#12383;&#12494;&#12540;&#12489;&#12399; /pure_pursuit_sl_81473 &#12391;&#12377;&#12290;</p><h2 id="13">10. &#32066;&#20102;&#20966;&#29702;</h2><p>&#19979;&#35352;&#12398;&#12467;&#12510;&#12531;&#12489;&#12434;&#23455;&#34892;&#12375;&#12390;&#32066;&#20102;&#12375;&#12414;&#12377;&#12290;</p><pre class="codeinput">set_param(model, <span class="string">'SimulationCommand'</span>, <span class="string">'Stop'</span>);
+close_system(model);
+rosshutdown();
+rmpath(pure_pursuit_folder);
+clear(<span class="string">'model'</span>, <span class="string">'pure_pursuit_folder'</span>);
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018b</a><br></p></div><!--
 ##### SOURCE BEGIN #####
+%% pure_pursuit_sl.slx の利用例
+% 
+%% 1. Autoware の起動
+% 
+% Autoware を実行して ROS マスターを起動します。
+% 
+% <<../images/run_autoware.png>>
+%
+% Runtime Manager が立ち上がります。
+% 
+% <<../images/runtime_manager.png>>
+% 
+% <html><br></html>
+% 
+%% 2. Runtime Manager の Setup タブ内の設定
+% 
+% 車両モデルをロードします。
+% 
+% <<../images/setup_tab_load_vehicle_model.png>>
+% 
+% <html><br></html>
+% 
+%% 3. Runtime Manager の Map タブ内の設定
+% 
+% Vector Map と TF を読み込みます。
+% 
+% <<../images//map_tab_load_vectormap_tf.png>>
+% 
+% <html><br></html>
+% 
+%% 4. rviz の起動
+% 
+% Runtime Manager の RViz ボタンをクリックして rviz を起動します。
+% 
+% <<../images/click_rviz.png>>
+% 
+% rviz が起動したら、メニューから［File］-［Open Config］を選択します。
+% 
+% <<../images/rviz_file_open_config.png>>
+% 
+% ファイル選択画面で「~/Autoware/ros/src/.config/rviz/default.rviz」を選択します。
+% 
+% <<../images/choose_file_to_open.png>>
+% 
+% Config 設定後、rviz 画面には Vector Map が表示されます。
+% 
+% <<../images/show_vectormap.png>>
+% 
+% <html><br></html>
+% 
+%% 5. Runtime Manager の Computing タブ内の設定
+% 
+% (1) waypoint_loader の app をクリックして、経路が保存されている csv ファイルを指定します。
+% 
+% <<../images/waypoint_loader.png>>
+%
+% ファイルを指定したら、Computing タブ内の waypoint_loader のチェックボックスにチェックを入れます。
+% 
+% (2) vel_pose_connect の app をクリックして、「Simulation Mode」にチェックを入れます。
+% 
+% <<images/vel_pose_connect.png>>
+% 
+% Simulation Mode 設定後、Computing タブ内の vel_pose_connect のチェックボックスにチェックを入れます。
+% 
+% (3) wf_simulator の app をクリックして、「Initialize Source」を「Rviz」に設定します。
+% 
+% <<images/pure_pursuit/wf_simulator_app.png>>
+% 
+% 「Initialize Source」を「Rviz」に設定後、Computing タブ内の wf_simulator のチェックボックスにチェックを入れます。
+% 
+% (4) lane_rule、lane_stop、lane_select、obstacle_avoid、velocity_set、twist_filter、wf_simulator の
+%   チェックボックスにチェックを入れて、これらのノードを起動します。
+% 設定後の Computing タブは下図のようになります。
+% 
+% <<images/pure_pursuit/computing_tab.png>>
+% 
+% <html><br></html>
+% 
+%% 6. MATLAB から Autoware（ROS マスター）への接続
+% 
+% MATLAB で rosinit コマンドを使用して ROS マスターに接続します。
+% rosinit の引数はご自身の環境に合わせて設定してください。
+% 
+rosinit();
 %%
 % 
-% _*|Under Construction|*_
-%
+% <<../images/rosinit.png>>
+% 
+%% 7. Simulink で作成した pure_pursuit を起動
+% 
+% pure_pursuit の Simulink モデルがあるフォルダをMATLAB検索パスに登録後、
+% pure_pursuit の Simulink モデルを開きます。
+% 
+pure_pursuit_folder = fullfile(autoware.getRootDirectory(), ...
+                        'benchmark', 'computing', 'planning', 'motion', 'waypoint_follower', 'pure_pursuit');
+addpath(pure_pursuit_folder);
+model = 'pure_pursuit_sl';
+open_system(model);
+%%
+% 
+% <<images/pure_pursuit/pure_pursuit_sl_top.png>>
+%  
+%% 8. Simulink で作成した pure_pursuit を実行
+% 
+% pure_pursuit の Simulink モデルを実行します。
+% 
+set_param(model, 'SimulationCommand', 'Start');
+
+%% 8. rviz で車両の初期位置を設定
+% 
+%  (1) rviz の「2D Pose Estimate」をクリックします。
+%  (2) その後、車両の初期位置から移動方向にマウスドラッグして矢印を設定します。
+% 
+% <<images/2D_Pose_Estimate.png>>
+% 
+% <html><br></html>
+% 
+%% 9. 経路追従の開始
+% 
+% rviz で初期位置を設定後しばらくすると、経路追従が始まります。
+% 
+% <<images/result_waypoint_follower.png>>
+% 
+% 本例実行時のノードグラフを確認するには
+% <./images/pure_pursuit/rosgraph_pure_pursuit.png ここ>をクリックしてください。
+% pure_pursuit_sl で生成されたノードは /pure_pursuit_sl_81473 です。
+% 
+%% 10. 終了処理
+% 
+% 下記のコマンドを実行して終了します。
+% 
+set_param(model, 'SimulationCommand', 'Stop');
+close_system(model);
+rosshutdown();
+rmpath(pure_pursuit_folder);
+clear('model', 'pure_pursuit_folder');
 ##### SOURCE END #####
 --></body></html>
