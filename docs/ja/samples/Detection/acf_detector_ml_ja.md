@@ -4,7 +4,7 @@
 Autoware を実行して ROS マスターを起動します。  
 ![](images/run_autoware.png)  
 
-Runtime Manager が立ち上がります。
+Runtime Manager が立ち上がります。  
 ![](images/runtime_manager.png)
 
 ## 2. rviz の起動
@@ -57,11 +57,12 @@ acf_detector_obj = AcfDetector();
 1. imageViewerPlugin の Object Rect Topic を「/detection/vision_objects」に設定します。
 1. 人物を検出すると Boundary Box が表示されます。  
 
-![](images/AcfDetector/detect_people.png)
+![](images/AcfDetector/detect_people.png)  
+上図は、書籍「[Autoware 自動運転ソフトウェア入門](http://www.ric.co.jp/book/contents/book_1187.html) 」で提供されるサンプルデータを利用しています。  
+本サンプル実行時のノードグラフを表示するには、[ここ](images/AcfDetector/rosgraph_acf_detector.png) をクリックしてください。  
+AcfDetector.m で生成されたノードは **/acf_detector_ml** です。
 
-上図は、書籍「[Autoware 自動運転ソフトウェア入門](http://www.ric.co.jp/book/contents/book_1187.html) 」で提供されるサンプルデータを利用しています。
-
-## 11. 終了処理
+## 9. 終了処理
 下記のコマンドを実行して終了します。  
 ```MATLAB
 acf_detector_obj.delete();

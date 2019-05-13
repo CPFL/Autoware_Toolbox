@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>AcfDetector.m &#12398;&#21033;&#29992;&#20363;</title><meta name="generator" content="MATLAB 9.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-05-10"><meta name="DC.source" content="acf_detector_ml_ja.m"><style type="text/css">
+      --><title>AcfDetector.m &#12398;&#21033;&#29992;&#20363;</title><meta name="generator" content="MATLAB 9.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-05-13"><meta name="DC.source" content="acf_detector_ml_ja.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -72,7 +72,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
                         <span class="string">'vision_detector'</span>, <span class="string">'acf_detector'</span>);
 addpath(acf_detector_folder);
 acf_detector_obj = AcfDetector();
-</pre><h2 id="7">7. rosbag &#12398;&#20877;&#29983;&#65288;Runtime Manager &#12398; Simulation &#12479;&#12502;&#65289;</h2><p>&#12300;Play&#12301;&#12508;&#12479;&#12531;&#12434;&#12463;&#12522;&#12483;&#12463;&#12375;&#12390;rosbag &#12434;&#20877;&#29983;&#12375;&#12414;&#12377;&#12290;</p><p><img vspace="5" hspace="5" src="images/AcfDetector/play_simulation.png" alt=""> </p><h2 id="8">8. imageViewerPlugin &#12398; Topic &#35373;&#23450;</h2><div><ol><li>imageViewerPlugin &#12398; Image Topic &#12434;&#12300;/image_raw&#12301;&#12395;&#35373;&#23450;&#12375;&#12414;&#12377;&#12290;</li><li>imageViewerPlugin &#12398; Object Rect Topic &#12434;&#12300;/detection/vision_objects&#12301;&#12395;&#35373;&#23450;&#12375;&#12414;&#12377;&#12290;</li><li>&#20154;&#29289;&#12434;&#26908;&#20986;&#12377;&#12427;&#12392; Boundary Box &#12364;&#34920;&#31034;&#12373;&#12428;&#12414;&#12377;&#12290;</li></ol></div><p><img vspace="5" hspace="5" src="images/AcfDetector/detect_people.png" alt=""> </p><p>&#19978;&#22259;&#12399;&#12289;&#26360;&#31821;&#12300; <a href="http://www.ric.co.jp/book/contents/book_1187.html">Autoware &#33258;&#21205;&#36939;&#36578;&#12477;&#12501;&#12488;&#12454;&#12455;&#12450;&#20837;&#38272;</a>&#12301;&#12391;&#25552;&#20379;&#12373;&#12428;&#12427;&#12469;&#12531;&#12503;&#12523;&#12487;&#12540;&#12479;&#12434;&#21033;&#29992;&#12375;&#12390;&#12356;&#12414;&#12377;&#12290;</p><h2 id="9">11. &#32066;&#20102;&#20966;&#29702;</h2><p>&#19979;&#35352;&#12398;&#12467;&#12510;&#12531;&#12489;&#12434;&#23455;&#34892;&#12375;&#12390;&#32066;&#20102;&#12375;&#12414;&#12377;&#12290;</p><pre class="codeinput">acf_detector_obj.delete();
+</pre><h2 id="7">7. rosbag &#12398;&#20877;&#29983;&#65288;Runtime Manager &#12398; Simulation &#12479;&#12502;&#65289;</h2><p>&#12300;Play&#12301;&#12508;&#12479;&#12531;&#12434;&#12463;&#12522;&#12483;&#12463;&#12375;&#12390;rosbag &#12434;&#20877;&#29983;&#12375;&#12414;&#12377;&#12290;</p><p><img vspace="5" hspace="5" src="images/AcfDetector/play_simulation.png" alt=""> </p><h2 id="8">8. imageViewerPlugin &#12398; Topic &#35373;&#23450;</h2><div><ol><li>imageViewerPlugin &#12398; Image Topic &#12434;&#12300;/image_raw&#12301;&#12395;&#35373;&#23450;&#12375;&#12414;&#12377;&#12290;</li><li>imageViewerPlugin &#12398; Object Rect Topic &#12434;&#12300;/detection/vision_objects&#12301;&#12395;&#35373;&#23450;&#12375;&#12414;&#12377;&#12290;</li><li>&#20154;&#29289;&#12434;&#26908;&#20986;&#12377;&#12427;&#12392; Boundary Box &#12364;&#34920;&#31034;&#12373;&#12428;&#12414;&#12377;&#12290;</li></ol></div><p><img vspace="5" hspace="5" src="images/AcfDetector/detect_people.png" alt=""> </p><p>&#19978;&#22259;&#12399;&#12289;&#26360;&#31821;&#12300; <a href="http://www.ric.co.jp/book/contents/book_1187.html">Autoware &#33258;&#21205;&#36939;&#36578;&#12477;&#12501;&#12488;&#12454;&#12455;&#12450;&#20837;&#38272;</a>&#12301;&#12391;&#25552;&#20379;&#12373;&#12428;&#12427;&#12469;&#12531;&#12503;&#12523;&#12487;&#12540;&#12479;&#12434;&#21033;&#29992;&#12375;&#12390;&#12356;&#12414;&#12377;&#12290;</p><p>&#26412;&#12469;&#12531;&#12503;&#12523;&#23455;&#34892;&#26178;&#12398;&#12494;&#12540;&#12489;&#12464;&#12521;&#12501;&#12434;&#34920;&#31034;&#12377;&#12427;&#12395;&#12399;&#12289; <a href="images/AcfDetector/rosgraph_acf_detector.png">&#12371;&#12371;</a> &#12434;&#12463;&#12522;&#12483;&#12463;&#12375;&#12390;&#12367;&#12384;&#12373;&#12356;&#12290; AcfDetector.m &#12391;&#29983;&#25104;&#12373;&#12428;&#12383;&#12494;&#12540;&#12489;&#12399; /acf_detector_ml &#12391;&#12377;&#12290;</p><h2 id="9">11. &#32066;&#20102;&#20966;&#29702;</h2><p>&#19979;&#35352;&#12398;&#12467;&#12510;&#12531;&#12489;&#12434;&#23455;&#34892;&#12375;&#12390;&#32066;&#20102;&#12375;&#12414;&#12377;&#12290;</p><pre class="codeinput">acf_detector_obj.delete();
 rosshutdown();
 rmpath(acf_detector_folder);
 clear <span class="string">acf_detector_obj</span> <span class="string">acf_detector_folder</span>;
@@ -122,7 +122,6 @@ clear <span class="string">acf_detector_obj</span> <span class="string">acf_dete
 % 
 % <<images/set_rosbag.png>>
 % 
-% 
 %% 5. MATLAB から Autoware（ROS マスター）への接続
 % 
 % MATLAB で rosinit コマンドを使用して ROS マスターに接続します。
@@ -157,6 +156,10 @@ acf_detector_obj = AcfDetector();
 % 
 % 上図は、書籍「
 % <http://www.ric.co.jp/book/contents/book_1187.html Autoware 自動運転ソフトウェア入門>」で提供されるサンプルデータを利用しています。
+% 
+% 本サンプル実行時のノードグラフを表示するには、
+% <images/AcfDetector/rosgraph_acf_detector.png ここ> をクリックしてください。
+% AcfDetector.m で生成されたノードは /acf_detector_ml です。
 % 
 %% 11. 終了処理
 % 
