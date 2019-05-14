@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>Installation</title><meta name="generator" content="MATLAB 9.4"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-04-12"><meta name="DC.source" content="install_awtb_en.m"><style type="text/css">
+      --><title>Install Autoware Toolbox in MATLAB</title><meta name="generator" content="MATLAB 9.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-05-14"><meta name="DC.source" content="install_awtb_en.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -66,11 +66,166 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1>Installation</h1><p><i><b><tt>Under Construction</tt></b></i></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018a</a><br></p></div><!--
+  </style></head><body><div class="content"><h1>Install Autoware Toolbox in MATLAB</h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">1. Download from GitHub</a></li><li><a href="#2">2. Add Autoware Toolbox folder to MATLAB search path</a></li><li><a href="#3">3. Install Robotics System Toolbox Interface for ROS Custom Messages</a></li><li><a href="#7">4. Create Custom Messages from ROS Package</a></li><li><a href="#10">5. Adjust  the Java heap size</a></li><li><a href="#11">6. Restart MATLAB</a></li></ul></div><h2 id="1">1. Download from GitHub</h2><p>Download the Autoware Toolbox from the <a href="https://github.com/CPFL/Autoware_Toolbox">GitHub repository</a></p><h2 id="2">2. Add Autoware Toolbox folder to MATLAB search path</h2><p>Run autoware_toolbox_setup.m in the root folder of Autoware Toolbox.</p><p><img vspace="5" hspace="5" src="./images/run_setup_en.png" alt=""> </p><h2 id="3">3. Install Robotics System Toolbox Interface for ROS Custom Messages</h2><p><b><tt>a. Confirm if add-on is installed.</tt></b></p><p>Paste the following program into the MATLAB command window and execute it.</p><pre class="codeinput">addons = matlab.addons.installedAddons;
+addon_id = <span class="string">'RO_CUSTOM_ROS_INTERFACE'</span>;
+tf = strcmp(addon_id, addons.Identifier);
+installed_ros_if = any(tf);
+<span class="keyword">if</span> installed_ros_if
+   disp(<span class="string">'Robotics System Toolbox Interface for ROS Custom Messages is already installed.'</span>);
+<span class="keyword">else</span>
+   disp(<span class="string">'Robotics System Toolbox interface for ROS Custom Messages is not installed.'</span>);
+<span class="keyword">end</span>
+</pre><p><b><tt>b. Install Robotics System Toolbox Interface for ROS Custom Messages</tt></b></p><p><i><b>If already installed, this work is not necessary. Skip to "4. Create ROS custom message".</b></i></p><p>To install the add-ons relevant to Robotics System Toolbox, enter the following command in the MATLAB command window and execute.</p><pre class="codeinput">roboticsAddons();
+</pre><p>When the Add-On Explorer opens, select Robotics System Toolbox Interface for ROS Custom Messages.</p><p><img vspace="5" hspace="5" src="./images/addon_explore_en.png" alt=""> </p><p><br></p><p>Click "Install" button.</p><p><img vspace="5" hspace="5" src="./images/install_if_ros_custom_msg_en.png" alt=""> </p><p><br></p><p>Click "I Accept" button.</p><p><img vspace="5" hspace="5" src="./images/agree_license_en.png" alt=""> </p><p><br></p><p>When the third-party software installation screen appears, click Next.</p><p><img vspace="5" hspace="5" src="./images/third_party_software_en.png" alt=""> </p><p>Continue to follow the setup instructions on the Add-On Explorer to install add-ons.</p><p><tt>Reference</tt></p><div><ol><li><a href="matlab:web(fullfile(docroot,'robotics/ug/install-robotics-system-toolbox-support-packages.html'))">Install Robotics System Toolbox Add-ons &#65288;MATLAB&#12504;&#12523;&#12503;&#65289;</a></li><li><a href="https://www.mathworks.com/help/releases/R2018a/robotics/ug/install-robotics-system-toolbox-support-packages.html">Install Robotics System Toolbox Add-ons &#65288;MathWorks Web&#12469;&#12452;&#12488;&#65289;</a></li></ol></div><h2 id="7">4. Create Custom Messages from ROS Package</h2><p><b><tt>a. Run a custom message generation program.</tt></b></p><p>Paste the following command into the MATLAB command window and execute it.</p><pre class="codeinput">autoware.createCustomMessages();
+</pre><p><b>|b. Edit javaclasspath.txt  |</b></p><p>Follow the steps below or execute <a href="matlab:autoware.editJavaClassPath()">autoware.editJavaClassPath()</a>.</p><p>1. Click the javaclasspath.txt link to open the file in the Editor.</p><p><img vspace="5" hspace="5" src="./images/after_rosgenmsg_en.png" alt=""> </p><p>2. Copy and paste the different jar file locations as new lines in the file. If this file does not exist, you will be prompted to create it. Click Yes and then copy and paste the file locations into the file.</p><p>3. The javaclasspath.txt looks like this after adding lines. Other paths may also already exist in this file.</p><p><img vspace="5" hspace="5" src="./images/javaclasspath_txt_en.png" alt=""> </p><p><b><tt>c. Add custom message folders to the MATLAB search path</tt></b> Paste the following command into the MATLAB command window and execute it.</p><pre class="codeinput">autoware.addCustomMessageFolderToSearchPath();
+</pre><p><tt>Reference</tt></p><div><ol><li><a href="matlab:web(fullfile(docroot,'robotics/ug/create-custom-messages-from-ros-package.html'))">Create Custom Messages from ROS Package &#65288;MATLAB&#12504;&#12523;&#12503;&#65289;</a></li><li><a href="https://www.mathworks.com/help/releases/R2018a/robotics/ug/create-custom-messages-from-ros-package.html">Create Custom Messages from ROS Package &#65288;MathWorks Web&#12469;&#12452;&#12488;&#65289;</a></li></ol></div><h2 id="10">5. Adjust  the Java heap size</h2><p>Autoware may send and receive large ROS messages. Therefore, increase the Java heap memory size.</p><p>1. Click <i>Preferences</i> on the MATLAB toolbar.</p><p>2. Expand General</p><p>3. To open the MATLAB <i>General</i> Java Heap Memory Preferences panel, click <i>Java Heap Memory</i></p><p><img vspace="5" hspace="5" src="./images/java_heap_memory_preferences_en.png" alt=""> </p><p>4. Adjust the Java heap memory size.</p><p>5. Click the "OK" button to close the dialog box.</p><p>6. To enable the new Java heap size, restart MATLAB.</p><p><tt>Reference</tt></p><div><ol><li><a href="matlab:web(fullfile(docroot,'robotics/ug/create-custom-messages-from-ros-package.html'))">Create Custom Messages from ROS Package &#65288;MATLAB&#12504;&#12523;&#12503;&#65289;</a></li><li><a href="https://www.mathworks.com/help/releases/R2018a/robotics/ug/create-custom-messages-from-ros-package.html">Create Custom Messages from ROS Package &#65288;MathWorks Web&#12469;&#12452;&#12488;&#65289;</a></li></ol></div><h2 id="11">6. Restart MATLAB</h2><div><ol><li>Restart MATLAB for the new Java heap size and path changes to be applied.</li><li>After restarting MATLAB, verify the Autoware messages are registered.</li></ol></div><pre class="codeinput">rosmsg <span class="string">list</span>
+</pre><p>If the Autoware messages are registered, the installation is complete.</p><p><img vspace="5" hspace="5" src="./images/autoware_messages_en.png" alt=""> </p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018b</a><br></p></div><!--
 ##### SOURCE BEGIN #####
-%% Installation
+%% Install Autoware Toolbox in MATLAB
 % 
-% _*|Under Construction|*_
+%% 1. Download from GitHub
+% 
+% Download the Autoware Toolbox from the 
+% <https://github.com/CPFL/Autoware_Toolbox GitHub repository>
+% 
+%% 2. Add Autoware Toolbox folder to MATLAB search path
+% 
+% Run autoware_toolbox_setup.m in the root folder of Autoware Toolbox.  
 %
+% <<./images/run_setup_en.png>>
+% 
+%% 3. Install Robotics System Toolbox Interface for ROS Custom Messages
+% 
+% *|a. Confirm if add-on is installed.|*
+% 
+% Paste the following program into the MATLAB command window and execute it.
+% 
+addons = matlab.addons.installedAddons;
+addon_id = 'RO_CUSTOM_ROS_INTERFACE';
+tf = strcmp(addon_id, addons.Identifier);
+installed_ros_if = any(tf);
+if installed_ros_if
+   disp('Robotics System Toolbox Interface for ROS Custom Messages is already installed.');
+else
+   disp('Robotics System Toolbox interface for ROS Custom Messages is not installed.');
+end
+
+%%
+% 
+% *|b. Install Robotics System Toolbox Interface for ROS Custom Messages|*
+% 
+% _*If already installed, this work is not necessary. Skip to "4. Create ROS custom message".*_
+% 
+% To install the add-ons relevant to Robotics System Toolbox, enter the following command in the MATLAB command window and execute.
+roboticsAddons();
+
+%%
+% 
+% When the Add-On Explorer opens, select Robotics System Toolbox Interface for ROS Custom Messages.  
+% 
+% <<./images/addon_explore_en.png>>
+% 
+% <html><br></html>
+% 
+% Click "Install" button.  
+% 
+% <<./images/install_if_ros_custom_msg_en.png>>
+% 
+% <html><br></html>
+% 
+% Click "I Accept" button.  
+% 
+% <<./images/agree_license_en.png>>
+% 
+% <html><br></html>
+% 
+% When the third-party software installation screen appears, click Next.  
+% 
+% <<./images/third_party_software_en.png>>
+% 
+% Continue to follow the setup instructions on the Add-On Explorer to install add-ons.  
+% 
+%% 
+% 
+% |Reference|
+% 
+% # <matlab:web(fullfile(docroot,'robotics/ug/install-robotics-system-toolbox-support-packages.html')) Install Robotics System Toolbox Add-ons （MATLABヘルプ）>
+% # <https://www.mathworks.com/help/releases/R2018a/robotics/ug/install-robotics-system-toolbox-support-packages.html Install Robotics System Toolbox Add-ons （MathWorks Webサイト）>
+% 
+%% 4. Create Custom Messages from ROS Package
+% 
+% *|a. Run a custom message generation program.|*
+% 
+% Paste the following command into the MATLAB command window and execute it.  
+autoware.createCustomMessages();    
+
+%%
+% 
+% *|b. Edit javaclasspath.txt  |*
+% 
+% Follow the steps below or execute
+% <matlab:autoware.editJavaClassPath() autoware.editJavaClassPath()>.  
+% 
+% 1. Click the javaclasspath.txt link to open the file in the Editor.  
+% 
+% <<./images/after_rosgenmsg_en.png>>
+% 
+% 2. Copy and paste the different jar file locations as new lines in the file. If this file does not exist, you will be prompted to create it. Click Yes and then copy and paste the file locations into the file.
+% 
+% 3. The javaclasspath.txt looks like this after adding lines. Other paths may also already exist in this file.
+% 
+% <<./images/javaclasspath_txt_en.png>>
+% 
+% *|c. Add custom message folders to the MATLAB search path|*
+% Paste the following command into the MATLAB command window and execute it.  
+% 
+autoware.addCustomMessageFolderToSearchPath();
+
+%%
+% 
+% |Reference|
+%
+% # <matlab:web(fullfile(docroot,'robotics/ug/create-custom-messages-from-ros-package.html')) Create Custom Messages from ROS Package （MATLABヘルプ）>
+% # <https://www.mathworks.com/help/releases/R2018a/robotics/ug/create-custom-messages-from-ros-package.html Create Custom Messages from ROS Package （MathWorks Webサイト）>
+% 
+%% 5. Adjust  the Java heap size
+% 
+% Autoware may send and receive large ROS messages.
+% Therefore, increase the Java heap memory size.  
+% 
+% 1. Click 
+% _Preferences_ on the MATLAB toolbar.
+% 
+% 2. Expand General
+% 
+% 3. To open the MATLAB 
+% _General_ Java Heap Memory Preferences panel, click 
+% _Java Heap Memory_
+% 
+% <<./images/java_heap_memory_preferences_en.png>>
+% 
+% 4. Adjust the Java heap memory size.
+% 
+% 5. Click the "OK" button to close the dialog box.
+% 
+% 6. To enable the new Java heap size, restart MATLAB.
+% 
+% |Reference|
+%
+% # <matlab:web(fullfile(docroot,'robotics/ug/create-custom-messages-from-ros-package.html')) Create Custom Messages from ROS Package （MATLABヘルプ）>
+% # <https://www.mathworks.com/help/releases/R2018a/robotics/ug/create-custom-messages-from-ros-package.html Create Custom Messages from ROS Package （MathWorks Webサイト）>
+% 
+%% 6. Restart MATLAB  
+% 
+% # Restart MATLAB for the new Java heap size and path changes to be applied.  
+% # After restarting MATLAB, verify the Autoware messages are registered.    
+rosmsg list
+
+%%
+% 
+% If the Autoware messages are registered, the installation is complete.   
+% 
+% <<./images/autoware_messages_en.png>>
+% 
 ##### SOURCE END #####
 --></body></html>
