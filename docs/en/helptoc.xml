@@ -10,5 +10,6 @@
                 <tocitem target="Helper/createCustomMessages_help_en.html">createCustomMessages - Generate ROS custom messages for Autoware in MATLAB format</tocitem>
                 <tocitem target="Helper/editJavaClassPath_help_en.html">editJavaClassPath - Add jar file path to javaclasspath.txt</tocitem>
             </tocitem>
+        </tocitem>
     </tocitem>
 </toc>
