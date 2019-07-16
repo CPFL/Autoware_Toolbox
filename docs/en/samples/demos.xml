@@ -68,7 +68,7 @@
         <demoitem>
             <label>Voxel Grid Filter</label>
             <type>M-file</type>
-            <file>Filters/demo_voxel_grid_filter_ml_en.html</file>
+            <file>Filters/voxel_grid_filter_ml_en.html</file>
             <thumbnail>xxx.PNG</thumbnail>
             <source>..\..\samples\sensing\filters\points_downsampler\voxel_grid_filter\voxel_grid_filter_ml.m</source>
         </demoitem>

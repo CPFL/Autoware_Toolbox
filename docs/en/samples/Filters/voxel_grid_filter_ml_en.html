@@ -1,0 +1,210 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>VoxelGridFilter.m</title><meta name="generator" content="MATLAB 9.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-07-16"><meta name="DC.source" content="voxel_grid_filter_ml_en.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>VoxelGridFilter.m</h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">1. Run Autoware</a></li><li><a href="#2">2. Simulation clock setting</a></li><li><a href="#3">3. LiDAR mounting position setting and load vehicle model</a></li><li><a href="#4">4. Loading of map data and TF</a></li><li><a href="#5">5. Start nodes required to run this example</a></li><li><a href="#6">6. Connect MATLAB to Autoware (ROS Master)</a></li><li><a href="#7">7. Start VoxelGridFilter.m.</a></li><li><a href="#8">8. Play rosbag file</a></li><li><a href="#9">9. Launch rviz</a></li><li><a href="#10">10. Checking filter processing</a></li><li><a href="#11">11. Clean up</a></li></ul></div><h2 id="1">1. Run Autoware</h2><p>Run Autoware to launch the ROS master.</p><p><img vspace="5" hspace="5" src="images/run_autoware.png" alt=""> </p><p>The Runtime Manager window is launched.</p><p><img vspace="5" hspace="5" src="images/runtime_manager.png" alt=""> </p><h2 id="2">2. Simulation clock setting</h2><p>Open the Simulation tab of the Runtime Manager. Click the "Ref" button to set the rosbag file to play.</p><p><img vspace="5" hspace="5" src="images/set_rosbag.png" alt=""> </p><p>Click the "Play" button to play rosbag (&#9312;), then click the "Pause" button to pause it (&#9313;). This operation turns on the simulation clock.</p><p><img vspace="5" hspace="5" src="images/simulation_clock_on.png" alt=""> </p><h2 id="3">3. LiDAR mounting position setting and load vehicle model</h2><p>Open the Setup tab of the Runtime Manager. Select Velodyne in the localizer section.</p><p><img vspace="5" hspace="5" src="images/set_localizer_velodyne.png" alt=""> </p><p>Set the parameters of the Baselink to Localizer section as follows, and click the "TF" button.</p><p><img vspace="5" hspace="5" src="images/set_baselink_to_localizer.png" alt=""> </p><p>Load the vehicle model by clicking the "Vehicle Model" button in the Vehicle Model section. If you leave the file selection blank, the default car model is loaded.</p><p><img vspace="5" hspace="5" src="images/load_vehicle_model.png" alt=""> </p><h2 id="4">4. Loading of map data and TF</h2><p>Open the Map tab of the Runtime Manager.</p><div><ol><li>Click the "Ref" button to the right of the "Point Cloud" button, select all pcd files to use for localization, and click the "Point Cloud" button.</li><li>Click the "Ref" button on the right of the "TF" button, select the launch file with the TF information corresponding to the pcd data, and click the "TF" button.</li></ol></div><p><img vspace="5" hspace="5" src="images/map_tab.png" alt=""> </p><h2 id="5">5. Start nodes required to run this example</h2><p>Open the Computing tab of the Runtime Manager.</p><p>Click the app of <b>nmea2tfpose</b> to open the setting window, set the Plane number to "7", and click the "OK" button.</p><p><img vspace="5" hspace="5" src="images/set_plane_number.png" alt=""> </p><p>Click the <b>ndt_matching</b> app to open the setting window, select "GNSS", and click the "OK" button.</p><p><img vspace="5" hspace="5" src="images/ndt_matching_app.png" alt=""> </p><p>Check the checkboxes of <b>nmea2tfpose</b> and <b>ndt_matching</b> .</p><p><img vspace="5" hspace="5" src="images/set_computing_tab.png" alt=""> </p><h2 id="6">6. Connect MATLAB to Autoware (ROS Master)</h2><p>Connect to the ROS master using the rosinit command in MATLAB.</p><pre class="codeinput">rosinit();
+</pre><h2 id="7">7. Start VoxelGridFilter.m.</h2><p>Add the folder containing the VoxelGridFilter.m class file to MATLAB search path, create an instance of voxelGridFilter, and execute filtering.</p><pre class="codeinput">voxel_grid_filter_folder = fullfile(autoware.getRootDirectory(), <span class="keyword">...</span>
+                        <span class="string">'benchmark'</span>, <span class="string">'sensing'</span>, <span class="string">'filters'</span>, <span class="string">'points_downsampler'</span>, <span class="keyword">...</span>
+                        <span class="string">'voxel_grid_filter'</span>);
+addpath(voxel_grid_filter_folder);
+voxel_grid_filter_obj = VoxelGridFilter();
+</pre><h2 id="8">8. Play rosbag file</h2><p>Open the Simulation tab of the Runtime Manager. Click the "Pause" button to play rosbag.</p><p><img vspace="5" hspace="5" src="images/replay_rosbag.png" alt=""> </p><h2 id="9">9. Launch rviz</h2><p>Launch the rviz by clicking the RViz button on the Runtime Manager.</p><p><img vspace="5" hspace="5" src="images/click_rviz.png" alt=""> </p><p>When rviz starts, select "Autoware / ros / src / .config / rviz / default.rviz" from the [File]-[Open Config] menu. The data loaded by Runtime Manager and rosbag data are displayed.</p><p><img vspace="5" hspace="5" src="images/voxel_grid_filter_ml/show_rviz.png" alt=""> </p><h2 id="10">10. Checking filter processing</h2><p>Set the topic of the point cluster to "/ points_raw" and check the point cloud before filtering.</p><p><img vspace="5" hspace="5" src="images/voxel_grid_filter_ml/points_raw.png" alt=""> </p><p>Next, change the topic of Points Cluster to "/ filtered_points" and check the filtered point cloud.</p><p><img vspace="5" hspace="5" src="images/voxel_grid_filter_ml/filtered_points.png" alt=""> </p><p>You can confirm that it is downsampled.</p><p>Click <a href="images/voxel_grid_filter_ml/rosgraph_voxel_grid_filter_ml.png">here</a> to check the node graph image when executing this example, or click <a href="images/voxel_grid_filter_ml/rosgraph_voxel_grid_filter_ml.svg">here</a> to check the SVG file. The node generated by VoxelGridFilter.m is / voxel_grid_filter_ml.</p><h2 id="11">11. Clean up</h2><p>Execute the following command to finish.</p><pre class="codeinput">voxel_grid_filter_obj.delete();
+rosshutdown();
+rmpath(voxel_grid_filter_folder);
+clear <span class="string">voxel_grid_filter_obj</span> <span class="string">voxel_grid_filter_folder</span>;
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% VoxelGridFilter.m
+% 
+%% 1. Run Autoware
+% 
+% Run Autoware to launch the ROS master.
+% 
+% <<images/run_autoware.png>>
+% 
+% The Runtime Manager window is launched.
+% 
+% <<images/runtime_manager.png>>
+% 
+%% 2. Simulation clock setting
+% 
+% Open the Simulation tab of the Runtime Manager.
+% Click the "Ref" button to set the rosbag file to play.
+% 
+% <<images/set_rosbag.png>>
+% 
+% Click the "Play" button to play rosbag (①), then click the "Pause" button to pause it (②).
+% This operation turns on the simulation clock.
+% 
+% <<images/simulation_clock_on.png>>
+% 
+%% 3. LiDAR mounting position setting and load vehicle model
+% 
+% Open the Setup tab of the Runtime Manager.
+% Select Velodyne in the localizer section.
+% 
+% <<images/set_localizer_velodyne.png>>
+% 
+% Set the parameters of the Baselink to Localizer section as follows, and click the "TF" button.
+% 
+% <<images/set_baselink_to_localizer.png>>
+% 
+% Load the vehicle model by clicking the "Vehicle Model" button in the Vehicle Model section.
+% If you leave the file selection blank, the default car model is loaded.
+% 
+% <<images/load_vehicle_model.png>>
+% 
+%% 4. Loading of map data and TF
+% 
+% Open the Map tab of the Runtime Manager.
+% 
+% # Click the "Ref" button to the right of the "Point Cloud" button, 
+% select all pcd files to use for localization, and click the "Point Cloud" button.
+% # Click the "Ref" button on the right of the "TF" button, 
+% select the launch file with the TF information corresponding to the pcd data, and click the "TF" button.
+% 
+% <<images/map_tab.png>>
+% 
+%% 5. Start nodes required to run this example
+% 
+% Open the Computing tab of the Runtime Manager.
+% 
+% Click the app of *nmea2tfpose* to open the setting window, set the Plane number to "7", and click the "OK" button.
+% 
+% <<images/set_plane_number.png>>
+% 
+% Click the *ndt_matching* app to open the setting window, select "GNSS", and click the "OK" button.
+% 
+% <<images/ndt_matching_app.png>>
+% 
+% Check the checkboxes of *nmea2tfpose* and *ndt_matching* .  
+% 
+% <<images/set_computing_tab.png>>
+% 
+%% 6. Connect MATLAB to Autoware (ROS Master)
+% 
+% Connect to the ROS master using the rosinit command in MATLAB.
+% 
+rosinit();
+
+%% 7. Start VoxelGridFilter.m.
+% 
+% Add the folder containing the VoxelGridFilter.m class file to MATLAB search path, 
+% create an instance of voxelGridFilter, and execute filtering.
+% 
+voxel_grid_filter_folder = fullfile(autoware.getRootDirectory(), ...
+                        'benchmark', 'sensing', 'filters', 'points_downsampler', ...
+                        'voxel_grid_filter');
+addpath(voxel_grid_filter_folder);
+voxel_grid_filter_obj = VoxelGridFilter();
+
+%% 8. Play rosbag file
+% 
+% Open the Simulation tab of the Runtime Manager.
+% Click the "Pause" button to play rosbag.
+% 
+% <<images/replay_rosbag.png>>
+% 
+%% 9. Launch rviz
+% 
+% Launch the rviz by clicking the RViz button on the Runtime Manager.
+% 
+% <<images/click_rviz.png>>
+% 
+% When rviz starts, select "Autoware / ros / src / .config / rviz / default.rviz" from the [File]-[Open Config] menu.
+% The data loaded by Runtime Manager and rosbag data are displayed.
+% 
+% <<images/voxel_grid_filter_ml/show_rviz.png>>
+% 
+%% 10. Checking filter processing
+% 
+% Set the topic of the point cluster to "/ points_raw" and check the point cloud before filtering.
+% 
+% <<images/voxel_grid_filter_ml/points_raw.png>>
+% 
+% Next, change the topic of Points Cluster to "/ filtered_points" and check the filtered point cloud.
+% 
+% <<images/voxel_grid_filter_ml/filtered_points.png>>
+% 
+% You can confirm that it is downsampled.
+% 
+% Click
+% <images/voxel_grid_filter_ml/rosgraph_voxel_grid_filter_ml.png here> to check the node graph image
+% when executing this example, or click
+% <images/voxel_grid_filter_ml/rosgraph_voxel_grid_filter_ml.svg here> to check the SVG file.
+% The node generated by VoxelGridFilter.m is / voxel_grid_filter_ml.
+% 
+%% 11. Clean up
+% 
+% Execute the following command to finish.
+% 
+voxel_grid_filter_obj.delete();
+rosshutdown();
+rmpath(voxel_grid_filter_folder);
+clear voxel_grid_filter_obj voxel_grid_filter_folder;
+##### SOURCE END #####
+--></body></html>
