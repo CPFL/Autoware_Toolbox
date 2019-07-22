@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>underConstruction</title><meta name="generator" content="MATLAB 9.4"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-04-02"><meta name="DC.source" content="underConstruction.m"><style type="text/css">
+      --><title>Usage example of AcfDetector.m</title><meta name="generator" content="MATLAB 9.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-07-22"><meta name="DC.source" content="acf_detector_ml_en.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -66,11 +66,112 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><p><i><b><tt>Under Construction</tt></b></i></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018a</a><br></p></div><!--
+  </style></head><body><div class="content"><h1>Usage example of AcfDetector.m</h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">1. Run Autoware</a></li><li><a href="#2">2. Launch rviz</a></li><li><a href="#3">3. Show imageViewerPlugin</a></li><li><a href="#4">4. Setting of rosbag file to play video</a></li><li><a href="#5">5. Connect MATLAB to Autoware (ROS Master)</a></li><li><a href="#6">6. Start AcfDetector.m.</a></li><li><a href="#7">7. Play rosbag file</a></li><li><a href="#8">8. Topic setting of imageViewerPlugin</a></li><li><a href="#9">9. Clean up</a></li></ul></div><h2 id="1">1. Run Autoware</h2><p>Run Autoware.</p><p><img vspace="5" hspace="5" src="../images/run_autoware.png" alt=""> </p><p>The Runtime Manager window is launched.</p><p><img vspace="5" hspace="5" src="../images/runtime_manager.png" alt=""> </p><p><br></p><h2 id="2">2. Launch rviz</h2><p>Launch the rviz by clicking the RViz button on the Runtime Manager.</p><p><img vspace="5" hspace="5" src="images/AcfDetector/click_rviz.png" alt=""> </p><h2 id="3">3. Show imageViewerPlugin</h2><p>When rviz starts, select &#65339;Panels&#65341;-&#65339;Add New Panel&#65341; from the menu.</p><p><img vspace="5" hspace="5" src="images/AcfDetector/add_new_pannel.png" alt=""> </p><p>Select "imageViewerPlugin".</p><p><img vspace="5" hspace="5" src="images/AcfDetector/select_image_viewer_plugin.png" alt=""> </p><p><b>Adjust the size of the imageViewerPlugin screen.</b></p><p>For example, make the imageViewerPlugin screen float as follows.</p><p><img vspace="5" hspace="5" src="images/AcfDetector/move_image_viewer.png" alt=""> </p><p>Then adjust the screen size.</p><p><img vspace="5" hspace="5" src="images/AcfDetector/resize_image_viewer.png" alt=""> </p><h2 id="4">4. Setting of rosbag file to play video</h2><p>Open the Simulation tab of the Runtime Manager. Click the "Ref" button to set the rosbag file to play.</p><p><img vspace="5" hspace="5" src="images/set_rosbag.png" alt=""> </p><h2 id="5">5. Connect MATLAB to Autoware (ROS Master)</h2><p>Connect to the ROS master using the <i><b>rosinit</b></i> command in MATLAB. Set the rosinit arguments according to your environment.</p><pre class="codeinput">rosinit();
+</pre><h2 id="6">6. Start AcfDetector.m.</h2><p>Add the folder containing the AcfDetector.m class file to MATLAB search path, create an instance of AcfDetector, and execute filtering.</p><pre class="codeinput">acf_detector_folder = fullfile(autoware.getRootDirectory(), <span class="keyword">...</span>
+                        <span class="string">'benchmark'</span>, <span class="string">'computing'</span>, <span class="string">'perception'</span>, <span class="string">'detection'</span>, <span class="keyword">...</span>
+                        <span class="string">'vision_detector'</span>, <span class="string">'acf_detector'</span>);
+addpath(acf_detector_folder);
+acf_detector_obj = AcfDetector();
+</pre><h2 id="7">7. Play rosbag file</h2><p>Open the Simulation tab of the Runtime Manager. Click the "Play" button to play rosbag.</p><p><img vspace="5" hspace="5" src="images/AcfDetector/play_simulation.png" alt=""> </p><h2 id="8">8. Topic setting of imageViewerPlugin</h2><div><ol><li>Set the Image Topic of ImageViewerPlugin to "/image_raw".</li><li>Set Object Rect Topic of imageViewerPlugin to "/detection/vision_objects".</li><li>When a person is detected, the Boundary Box is displayed.</li></ol></div><p><img vspace="5" hspace="5" src="images/AcfDetector/detect_people.png" alt=""> </p><p>The above figure uses the sample data provided in <a href="http://www.ric.co.jp/book/contents/book_1187.html">this book</a>.</p><p>Click <a href="images/AcfDetector/rosgraph_acf_detector_ml.png">here</a> to check the node graph when this example is executed. The node generated by AcfDetector.m is "/acf_detector_ml".</p><h2 id="9">9. Clean up</h2><p>Execute the following command to finish.</p><pre class="codeinput">acf_detector_obj.delete();
+rosshutdown();
+rmpath(acf_detector_folder);
+clear <span class="string">acf_detector_obj</span> <span class="string">acf_detector_folder</span>;
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018b</a><br></p></div><!--
 ##### SOURCE BEGIN #####
-%%
+%% Usage example of AcfDetector.m
 % 
-% _*|Under Construction|*_
-%
+%% 1. Run Autoware
+% 
+% Run Autoware.
+% 
+% <<../images/run_autoware.png>>
+% 
+% The Runtime Manager window is launched.
+% 
+% <<../images/runtime_manager.png>>
+% 
+% <html><br></html>
+% 
+%% 2. Launch rviz
+% 
+% Launch the rviz by clicking the RViz button on the Runtime Manager.
+% 
+% <<images/AcfDetector/click_rviz.png>>
+% 
+%% 3. Show imageViewerPlugin
+% 
+% When rviz starts, select ［Panels］-［Add New Panel］ from the menu.
+% 
+% <<images/AcfDetector/add_new_pannel.png>>
+% 
+% Select "imageViewerPlugin".
+% 
+% <<images/AcfDetector/select_image_viewer_plugin.png>>
+% 
+% *Adjust the size of the imageViewerPlugin screen.*
+% 
+% For example, make the imageViewerPlugin screen float as follows.
+% 
+% <<images/AcfDetector/move_image_viewer.png>>
+% 
+% Then adjust the screen size.
+% 
+% <<images/AcfDetector/resize_image_viewer.png>>
+% 
+%% 4. Setting of rosbag file to play video
+% 
+% Open the Simulation tab of the Runtime Manager.
+% Click the "Ref" button to set the rosbag file to play.
+% 
+% <<images/set_rosbag.png>>
+% 
+%% 5. Connect MATLAB to Autoware (ROS Master)
+% 
+% Connect to the ROS master using the _*rosinit*_ command in MATLAB.
+% Set the rosinit arguments according to your environment.
+% 
+rosinit();
+
+%% 6. Start AcfDetector.m.
+% 
+% Add the folder containing the AcfDetector.m class file to MATLAB search path, 
+% create an instance of AcfDetector, and execute filtering.
+% 
+acf_detector_folder = fullfile(autoware.getRootDirectory(), ...
+                        'benchmark', 'computing', 'perception', 'detection', ...
+                        'vision_detector', 'acf_detector');
+addpath(acf_detector_folder);
+acf_detector_obj = AcfDetector();
+
+%% 7. Play rosbag file
+% 
+% Open the Simulation tab of the Runtime Manager.
+% Click the "Play" button to play rosbag.
+% 
+% <<images/AcfDetector/play_simulation.png>>
+% 
+%% 8. Topic setting of imageViewerPlugin
+% 
+% # Set the Image Topic of ImageViewerPlugin to "/image_raw".
+% # Set Object Rect Topic of imageViewerPlugin to "/detection/vision_objects".
+% # When a person is detected, the Boundary Box is displayed.
+% 
+% <<images/AcfDetector/detect_people.png>>
+% 
+% The above figure uses the sample data provided in
+% <http://www.ric.co.jp/book/contents/book_1187.html this book>.
+% 
+% Click
+% <images/AcfDetector/rosgraph_acf_detector_ml.png here> to check the node graph when this example is executed.
+% The node generated by AcfDetector.m is "/acf_detector_ml".
+% 
+%% 9. Clean up
+% 
+% Execute the following command to finish.
+% 
+acf_detector_obj.delete();
+rosshutdown();
+rmpath(acf_detector_folder);
+clear acf_detector_obj acf_detector_folder;
 ##### SOURCE END #####
 --></body></html>
