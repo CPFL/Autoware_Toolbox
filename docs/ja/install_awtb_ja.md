@@ -91,3 +91,7 @@ rosmsg list
 Autoware メッセージが登録されていれば、インストールは終了です。 
 
 ![](./images/autoware_messages.png)
+
+---
+# Demo Video
+[![Demo Video](https://i.ytimg.com/vi/585bJhutSYc/sddefault.jpg)](https://youtu.be/585bJhutSYc)
