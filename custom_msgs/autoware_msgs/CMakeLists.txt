@@ -57,35 +57,35 @@ add_message_files(
             TrafficLightResultArray.msg
 
             ## Runtime Manager ##
-            config/ConfigApproximateNdtMapping.msg
-            config/ConfigCarDpm.msg
-            config/ConfigCarFusion.msg
-            config/ConfigCarKf.msg
-            config/ConfigDecisionMaker.msg
-            config/ConfigDistanceFilter.msg
-            config/ConfigRingGroundFilter.msg
-            config/ConfigICP.msg
-            config/ConfigLaneRule.msg
-            config/ConfigLaneSelect.msg
-            config/ConfigLaneStop.msg
-            config/ConfigLatticeVelocitySet.msg
-            config/ConfigNdt.msg
-            config/ConfigNdtMapping.msg
-            config/ConfigNdtMappingOutput.msg
-            config/ConfigPedestrianDpm.msg
-            config/ConfigPedestrianFusion.msg
-            config/ConfigPedestrianKf.msg
-            config/ConfigPlannerSelector.msg
-            config/ConfigPoints2Polygon.msg
-            config/ConfigRandomFilter.msg
-            config/ConfigRingFilter.msg
-            config/ConfigRayGroundFilter.msg
-            config/ConfigSsd.msg
-            config/ConfigTwistFilter.msg
-            config/ConfigVelocitySet.msg
-            config/ConfigVoxelGridFilter.msg
-            config/ConfigWaypointLoader.msg
-            config/ConfigWaypointFollower.msg
+            ConfigApproximateNdtMapping.msg
+            ConfigCarDpm.msg
+            ConfigCarFusion.msg
+            ConfigCarKf.msg
+            ConfigDecisionMaker.msg
+            ConfigDistanceFilter.msg
+            ConfigRingGroundFilter.msg
+            ConfigICP.msg
+            ConfigLaneRule.msg
+            ConfigLaneSelect.msg
+            ConfigLaneStop.msg
+            ConfigLatticeVelocitySet.msg
+            ConfigNdt.msg
+            ConfigNdtMapping.msg
+            ConfigNdtMappingOutput.msg
+            ConfigPedestrianDpm.msg
+            ConfigPedestrianFusion.msg
+            ConfigPedestrianKf.msg
+            ConfigPlannerSelector.msg
+            ConfigPoints2Polygon.msg
+            ConfigRandomFilter.msg
+            ConfigRingFilter.msg
+            ConfigRayGroundFilter.msg
+            ConfigSsd.msg
+            ConfigTwistFilter.msg
+            ConfigVelocitySet.msg
+            ConfigVoxelGridFilter.msg
+            ConfigWaypointLoader.msg
+            ConfigWaypointFollower.msg
             accel_cmd.msg
             adjust_xy.msg
             brake_cmd.msg
