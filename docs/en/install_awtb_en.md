@@ -96,3 +96,7 @@ rosmsg list
 If the Autoware messages are registered, the installation is complete.   
 
 ![](./images/autoware_messages_en.png)
+
+---
+## Demo Video
+[![Demo Video](https://i.ytimg.com/vi/585bJhutSYc/sddefault.jpg)](https://youtu.be/585bJhutSYc)
