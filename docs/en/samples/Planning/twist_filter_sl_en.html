@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>underConstruction</title><meta name="generator" content="MATLAB 9.4"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-04-02"><meta name="DC.source" content="underConstruction.m"><style type="text/css">
+      --><title>Usage example of twist_filter_sl.slx</title><meta name="generator" content="MATLAB 9.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-07-24"><meta name="DC.source" content="twist_filter_sl_en.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -66,11 +66,155 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><p><i><b><tt>Under Construction</tt></b></i></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018a</a><br></p></div><!--
+  </style></head><body><div class="content"><h1>Usage example of twist_filter_sl.slx</h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">1. Run Autoware</a></li><li><a href="#2">2. Load vehicle model</a></li><li><a href="#3">3. Load vector map and TF</a></li><li><a href="#4">4. Launch rviz</a></li><li><a href="#5">5. Settings on the Runtime Manager's Computing tab</a></li><li><a href="#6">6. Connect MATLAB to Autoware (ROS Master)</a></li><li><a href="#7">7. Open twist_filter created in Simulink.</a></li><li><a href="#9">8. Run twist_filter created in Simulink</a></li><li><a href="#10">9. Set the initial position of the vehicle with rviz</a></li><li><a href="#11">10. Start path following</a></li><li><a href="#12">11. Clean up</a></li></ul></div><h2 id="1">1. Run Autoware</h2><p>Run Autoware to launch the ROS master.</p><p><img vspace="5" hspace="5" src="../images/run_autoware.png" alt=""> </p><p>The Runtime Manager window is launched.</p><p><img vspace="5" hspace="5" src="../images/runtime_manager.png" alt=""> </p><p><br></p><h2 id="2">2. Load vehicle model</h2><p>Open the Setup tab of the Runtime Manager. Load a vehicle model.</p><p><img vspace="5" hspace="5" src="../images/setup_tab_load_vehicle_model.png" alt=""> </p><p><br></p><h2 id="3">3. Load vector map and TF</h2><p>Open the Map tab of the Runtime Manager. Load Vector Map and TF.</p><p><img vspace="5" hspace="5" src="../images/map_tab_load_vectormap_tf.png" alt=""> </p><p><br></p><h2 id="4">4. Launch rviz</h2><p>Launch the rviz by clicking the RViz button on the Runtime Manager.</p><p><img vspace="5" hspace="5" src="../images/click_rviz.png" alt=""> </p><p>When rviz starts, select [File]-[Open Config] from the menu.</p><p><img vspace="5" hspace="5" src="../images/rviz_file_open_config.png" alt=""> </p><p>Select " ~/ Autoware / ros / src / .config / rviz / default.rviz" on the file dialog.</p><p><img vspace="5" hspace="5" src="../images/choose_file_to_open.png" alt=""> </p><p>After Config setting, Vector Map is displayed on the rviz screen.</p><p><img vspace="5" hspace="5" src="../images/show_vectormap.png" alt=""> </p><p><br></p><h2 id="5">5. Settings on the Runtime Manager's Computing tab</h2><p>(1) Click "app" of <b>waypoint_loader</b> and select the csv file where the route is stored.</p><p><img vspace="5" hspace="5" src="../images/waypoint_loader.png" alt=""> </p><p>After selecting the csv file, check the <b>waypoint_loader</b> checkbox.</p><p>(2) Click "app" of <b>vel_pose_connect</b> and check "Simulation Mode".</p><p><img vspace="5" hspace="5" src="images/vel_pose_connect.png" alt=""> </p><p>After setting the "Simulation Mode", check the <b>vel_pose_connect</b> checkbox.</p><p>(3) Click "app" of <b>wf_simulator</b> and set "Initialize Source" to "Rviz".</p><p><img vspace="5" hspace="5" src="images/twist_filter/wf_simulator_app.png" alt=""> </p><p>After setting the "Initialize Source", check the <b>wf_simulator</b> checkbox.</p><p>(4) Check the checkboxes for lane_rule, lane_stop, lane_select, obstacle_avoid, velocity_set, pure_pursuit and wf_simulator. After setting, the Computing tab is as shown below.</p><p><img vspace="5" hspace="5" src="images/twist_filter/computing_tab.png" alt=""> </p><p><br></p><h2 id="6">6. Connect MATLAB to Autoware (ROS Master)</h2><p>Connect to the ROS master using the rosinit command in MATLAB. Set the rosinit arguments according to your environment.</p><pre class="codeinput">rosinit();
+</pre><h2 id="7">7. Open twist_filter created in Simulink.</h2><p>Add the folder containing the twist_filter_sl.slx file to MATLAB search path, open the twist_filter Simulink model.</p><pre class="codeinput">twist_filter_folder = fullfile(autoware.getRootDirectory(), <span class="keyword">...</span>
+                        <span class="string">'benchmark'</span>, <span class="string">'computing'</span>, <span class="string">'planning'</span>, <span class="string">'motion'</span>, <span class="string">'waypoint_follower'</span>, <span class="string">'twist_filter'</span>);
+addpath(twist_filter_folder);
+model = <span class="string">'twist_filter_sl'</span>;
+open_system(model);
+</pre><p><img vspace="5" hspace="5" src="images/twist_filter/twist_filter_sl_top.png" alt=""> </p><h2 id="9">8. Run twist_filter created in Simulink</h2><p>Run the Simulink model.</p><pre class="codeinput">set_param(model, <span class="string">'SimulationCommand'</span>, <span class="string">'Start'</span>);
+</pre><h2 id="10">9. Set the initial position of the vehicle with rviz</h2><pre>(1) Click "2D Pose Estimate" of rviz.
+(2) Next, drag the mouse in the direction of movement from the initial position of the vehicle.</pre><p><img vspace="5" hspace="5" src="images/2D_Pose_Estimate.png" alt=""> </p><p><br></p><h2 id="11">10. Start path following</h2><p>After a while after setting the initial position with rviz, path following starts.</p><p><img vspace="5" hspace="5" src="images/result_waypoint_follower.png" alt=""> </p><p>Click <a href="./images/twist_filter/rosgraph_twist_filter.png">here</a> to check the node graph when this example is executed. The node generated by twist_filter_sl is / twist_filter_sl_81473.</p><h2 id="12">11. Clean up</h2><p>Execute the following command to finish.</p><pre class="codeinput">set_param(model, <span class="string">'SimulationCommand'</span>, <span class="string">'Stop'</span>);
+close_system(model);
+rosshutdown();
+rmpath(twist_filter_folder);
+clear(<span class="string">'model'</span>, <span class="string">'twist_filter_folder'</span>);
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018b</a><br></p></div><!--
 ##### SOURCE BEGIN #####
+%% Usage example of twist_filter_sl.slx
+% 
+%% 1. Run Autoware
+% 
+% Run Autoware to launch the ROS master.
+% 
+% <<../images/run_autoware.png>>
+% 
+% The Runtime Manager window is launched.
+% 
+% <<../images/runtime_manager.png>>
+% 
+% <html><br></html>
+% 
+%% 2. Load vehicle model
+% 
+% Open the Setup tab of the Runtime Manager.
+% Load a vehicle model.
+% 
+% <<../images/setup_tab_load_vehicle_model.png>>
+% 
+% <html><br></html>
+% 
+%% 3. Load vector map and TF
+% 
+% Open the Map tab of the Runtime Manager.
+% Load Vector Map and TF.
+% 
+% <<../images/map_tab_load_vectormap_tf.png>>
+% 
+% <html><br></html>
+% 
+%% 4. Launch rviz
+% 
+% Launch the rviz by clicking the RViz button on the Runtime Manager.
+% 
+% <<../images/click_rviz.png>>
+% 
+% When rviz starts, select [File]-[Open Config] from the menu.
+% 
+% <<../images/rviz_file_open_config.png>>
+% 
+% Select " ~/ Autoware / ros / src / .config / rviz / default.rviz" on the file dialog.
+% 
+% <<../images/choose_file_to_open.png>>
+% 
+% After Config setting, Vector Map is displayed on the rviz screen.
+% 
+% <<../images/show_vectormap.png>>
+% 
+% <html><br></html>
+% 
+%% 5. Settings on the Runtime Manager's Computing tab
+% 
+% (1) Click "app" of *waypoint_loader* and select the csv file where the route is stored.
+% 
+% <<../images/waypoint_loader.png>>
+%
+% After selecting the csv file, check the *waypoint_loader* checkbox.
+% 
+% (2) Click "app" of *vel_pose_connect* and check "Simulation Mode".
+% 
+% <<images/vel_pose_connect.png>>
+% 
+% After setting the "Simulation Mode", check the *vel_pose_connect* checkbox.
+% 
+% (3) Click "app" of *wf_simulator* and set "Initialize Source" to "Rviz".
+% 
+% <<images/twist_filter/wf_simulator_app.png>>
+% 
+% After setting the "Initialize Source", check the *wf_simulator* checkbox.
+% 
+% (4) Check the checkboxes for lane_rule, lane_stop, lane_select, obstacle_avoid, 
+% velocity_set, pure_pursuit and wf_simulator.
+% After setting, the Computing tab is as shown below.
+% 
+% <<images/twist_filter/computing_tab.png>>
+% 
+% <html><br></html>
+% 
+%% 6. Connect MATLAB to Autoware (ROS Master)
+% 
+% Connect to the ROS master using the rosinit command in MATLAB.
+% Set the rosinit arguments according to your environment.
+% 
+rosinit();
+
+%% 7. Open twist_filter created in Simulink.
+% 
+% Add the folder containing the twist_filter_sl.slx file to MATLAB search path, 
+% open the twist_filter Simulink model.
+% 
+twist_filter_folder = fullfile(autoware.getRootDirectory(), ...
+                        'benchmark', 'computing', 'planning', 'motion', 'waypoint_follower', 'twist_filter');
+addpath(twist_filter_folder);
+model = 'twist_filter_sl';
+open_system(model);
 %%
 % 
-% _*|Under Construction|*_
-%
+% <<images/twist_filter/twist_filter_sl_top.png>>
+%  
+%% 8. Run twist_filter created in Simulink
+% 
+% Run the Simulink model.
+% 
+set_param(model, 'SimulationCommand', 'Start');
+
+%% 9. Set the initial position of the vehicle with rviz
+% 
+%  (1) Click "2D Pose Estimate" of rviz.
+%  (2) Next, drag the mouse in the direction of movement from the initial position of the vehicle.
+% 
+% <<images/2D_Pose_Estimate.png>>
+% 
+% <html><br></html>
+% 
+%% 10. Start path following
+% 
+% After a while after setting the initial position with rviz, path following starts.
+% 
+% <<images/result_waypoint_follower.png>>
+% 
+% Click
+% <./images/twist_filter/rosgraph_twist_filter.png here> to check the node graph when this example is executed.
+% The node generated by twist_filter_sl is / twist_filter_sl_81473.
+% 
+%% 11. Clean up
+% 
+% Execute the following command to finish.
+% 
+set_param(model, 'SimulationCommand', 'Stop');
+close_system(model);
+rosshutdown();
+rmpath(twist_filter_folder);
+clear('model', 'twist_filter_folder');
 ##### SOURCE END #####
 --></body></html>
