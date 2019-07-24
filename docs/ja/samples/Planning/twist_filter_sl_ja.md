@@ -96,4 +96,4 @@ clear('model', 'twist_filter_folder');
 ```
 ---
 # Demo Video
-[![Demo Video](https://i.ytimg.com/vi/hxmzXbhUMZQ/hqdefault.jpg)](https://youtu.be/hxmzXbhUMZQ)
+[![Demo Video](https://i9.ytimg.com/vi/LNWJ1iG0WoE/mq2.jpg?sqp=CLDI3ukF&rs=AOn4CLAfKJEwYaf6EANbwuGWXy3p13xjtg)](https://youtu.be/LNWJ1iG0WoE)
