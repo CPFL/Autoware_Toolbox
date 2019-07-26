@@ -97,3 +97,6 @@ rosshutdown();
 rmpath(voxel_grid_filter_folder);
 clear voxel_grid_filter_obj voxel_grid_filter_folder;
 ```
+---
+## Demo Video
+[![How to use VoxelGridFilter.m](https://i.ytimg.com/vi/yQtorst1fSQ/hqdefault.jpg)](https://youtu.be/yQtorst1fSQ)
