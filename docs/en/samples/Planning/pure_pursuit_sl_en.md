@@ -95,3 +95,6 @@ rosshutdown();
 rmpath(pure_pursuit_folder);
 clear('model', 'pure_pursuit_folder');
 ```
+---
+## Demo Video
+[![How to use pure_pursuit_sl.slx](https://i.ytimg.com/vi/C1ay6RXpXGo/hqdefault.jpg)](https://youtu.be/C1ay6RXpXGo)
