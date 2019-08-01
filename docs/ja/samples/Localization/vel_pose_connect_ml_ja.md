@@ -32,31 +32,26 @@ Config 設定後、rviz 画面には Vector Map が表示されます。
 ![waypoint_loader](../images/waypoint_loader.png)  
 ファイルを指定したら、Computing タブ内の waypoint_loader のチェックボックスにチェックを入れます。  
 
-(2) vel_pose_connect の app をクリックして、「Simulation Mode」にチェックを入れます。
-![vel_pose_connect](images/vel_pose_connect.png)  
-Simulation Mode 設定後、Computing タブ内の vel_pose_connect のチェックボックスにチェックを入れます。
-
-(3) lane_rule、lane_stop、lane_select、obstacle_avoid、velocity_set、pure_pursuit、twist_filter の
-チェックボックスにチェックを入れて、これらのノードを起動します。設定後の Computing タブは下図のようになります。  
-![computing_tab](images/wf_simulator/computing_tab.png)
+(2) lane_rule、lane_stop、lane_select、obstacle_avoid、velocity_set、pure_pursuit、twist_filter、wf_simulator のチェックボックスにチェックを入れて、これらのノードを起動します。設定後の Computing タブは下図のようになります。  
+![computing_tab](images/vel_pose_connect/computing_tab.png)
 
 ## 6. MATLAB から Autoware（ROS マスター）への接続
 MATLAB で rosinit コマンドを使用して ROS マスターに接続します。  
 ```MATLAB
 rosinit();
 ```  
-![rosinit](../images/rosinit.png)
+![rosinit](images/rosinit.png)
 
-## 7. MATLAB で作成した wf_simulator を起動
-WfSimulator クラスファイルがあるフォルダをMATLAB検索パスに登録後、WfSimulator クラスのインスタンスを生成し、run メソッドで実行します。  
+## 7. MATLAB で作成した vel_pose_connect を起動
+VelPoseConnect クラスファイルがあるフォルダをMATLAB検索パスに登録後、VelPoseConnect クラスのインスタンスを生成し、run メソッドで実行します。  
 ```MATLAB
-wf_sim_folder = fullfile(autoware.getRootDirectory(), ...
-                        'benchmark', 'computing', 'planning', 'motion', 'waypoint_follower', 'wf_simulator');
-addpath(wf_sim_folder);
-wf_simulator_ml_obj = WfSimulator();
-wf_simulator_ml_obj.run();
+vel_pose_connect_folder = fullfile(autoware.getRootDirectory(), ...
+                        'benchmark', 'computing', 'perception', 'localization', 'autoware_connector', 'vel_pose_connect');
+addpath(vel_pose_connect_folder);
+sim_mode = true;
+obj_vel_pose_connect = VelPoseConnect(sim_mode);
 ```  
-![connect_ros_master](../images/connect_ros_master.png)
+![connect_ros_master](images/vel_pose_connect/run_vel_pose_connect.png)
  
 ## 8. rviz で車両の初期位置を設定
 (1) rviz の「2D Pose Estimate」をクリックします。  
@@ -66,16 +61,19 @@ wf_simulator_ml_obj.run();
 ## 9. 経路追従の開始
 rviz で初期位置を設定後しばらくすると、経路追従が始まります。
 ![](images/result_waypoint_follower.png)  
-本例実行時のノードグラフを確認するには
-[ここ](images/wf_simulator/rosgraph.png)をクリックしてください。
-WfSimulator.m で生成されるノードは /wf_simulator_ml です。
+本例実行時のノードグラフのイメージファイルを確認するには
+[ここ](images/vel_pose_connect/rosgraph.png)をクリックしてください。
+SVGファイルを確認するには
+[ここ](images/vel_pose_connect/rosgraph.png)をクリックしてください。
+% <images/vel_pose_connect/rosgraph.svg ここ> をクリックしてください。
+VelPoseConnect.m で生成されるノードは /vel_pose_connect_ml です。
 
 ## 10. 終了処理
 
 下記のコマンドを実行して終了します。  
 ```MATLAB
-wf_simulator_ml_obj.delete()
-clear wf_simulator_ml_obj;
+vel_pose_connect_ml_obj.delete()
+clear vel_pose_connect_ml_obj;
 rosshutdown();
 rmpath(wf_sim_folder);
 ```

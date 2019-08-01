@@ -77,7 +77,7 @@ rosinit();
 %% 7. MATLABで作成した vel_pose_connect を起動
 % 
 % VelPoseConnect クラスファイルがあるフォルダをMATLAB検索パスに登録後、
-% VelPoseConnect クラスのインスタンスを生成し、run メソッドで実行します。
+% VelPoseConnect クラスのインスタンスを生成し、vel_pose_connect ノードを起動します。
 % 
 vel_pose_connect_folder = fullfile(autoware.getRootDirectory(), ...
                         'benchmark', 'computing', 'perception', 'localization', 'autoware_connector', 'vel_pose_connect');
