@@ -71,8 +71,8 @@ VelPoseConnect.m で生成されるノードは /vel_pose_connect_ml です。
 
 下記のコマンドを実行して終了します。  
 ```MATLAB
-vel_pose_connect_ml_obj.delete()
-clear vel_pose_connect_ml_obj;
+obj_vel_pose_connect.delete()
 rosshutdown();
-rmpath(wf_sim_folder);
+rmpath(vel_pose_connect_folder);
+clear obj_vel_pose_connect vel_pose_connect_folder;
 ```
