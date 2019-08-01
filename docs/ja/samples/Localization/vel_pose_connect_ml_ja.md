@@ -68,7 +68,6 @@ SVGファイルを確認するには
 VelPoseConnect.m で生成されるノードは /vel_pose_connect_ml です。
 
 ## 10. 終了処理
-
 下記のコマンドを実行して終了します。  
 ```MATLAB
 obj_vel_pose_connect.delete()
@@ -76,3 +75,6 @@ rosshutdown();
 rmpath(vel_pose_connect_folder);
 clear obj_vel_pose_connect vel_pose_connect_folder;
 ```
+---
+# Demo Video
+[![Demo Video](https://i.ytimg.com/vi/2PA6jsyUVpY/hqdefault.jpg)](https://youtu.be/2PA6jsyUVpY)
