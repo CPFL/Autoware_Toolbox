@@ -64,7 +64,7 @@ rviz で初期位置を設定後しばらくすると、経路追従が始まり
 本例実行時のノードグラフのイメージファイルを確認するには
 [ここ](images/vel_pose_connect/rosgraph.png)をクリックしてください。
 SVGファイルを確認するには
-[ここ](images/vel_pose_connect/rosgraph.png)をクリックしてください。。
+[ここ](images/vel_pose_connect/rosgraph.svg)をクリックしてください。。
 VelPoseConnect.m で生成されるノードは /vel_pose_connect_ml です。
 
 ## 10. 終了処理
