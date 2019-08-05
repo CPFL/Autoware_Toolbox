@@ -145,6 +145,20 @@
             <source>..\..\samples\computing\planning\motion\waypoint_follower\twist_filter\twist_filter_sl.slx</source>
         </demoitem>
     </demosection>
-
+    
+    <!-- Video demos -->
+    <demosection>
+        <label>Video Demos</label>
+        <demoitem>
+            <type>video</type>
+            <label>VelPoseConnect.m</label>
+            <callback>web('https://youtu.be/2PA6jsyUVpY', '-browser')</callback>
+        </demoitem>
+        <demoitem>
+            <type>video</type>
+            <label>vel_pose_connect_sl.slx</label>
+            <callback>web('https://youtu.be/HsVY3wIGg8A', '-browser')</callback>
+        </demoitem>
+    </demosection>
     
 </demos>

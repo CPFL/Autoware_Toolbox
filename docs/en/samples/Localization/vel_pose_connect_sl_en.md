@@ -97,3 +97,6 @@ rosshutdown();
 rmpath(vel_pose_connect_folder);
 clear('model', 'vel_pose_connect_folder');
 ```
+---
+# Demo Video
+[![Demo Video](https://i.ytimg.com/vi/HsVY3wIGg8A/hqdefault.jpg)](https://youtu.be/HsVY3wIGg8A)
