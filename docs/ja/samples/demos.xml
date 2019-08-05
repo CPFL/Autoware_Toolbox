@@ -150,6 +150,11 @@
         <label>Video Demos</label>
         <demoitem>
             <type>video</type>
+            <label>How to set up Autoware Toolbox</label>
+            <callback>web('https://youtu.be/585bJhutSYc', '-browser')</callback>
+        </demoitem>
+        <demoitem>
+            <type>video</type>
             <label>VelPoseConnect.m</label>
             <callback>web('https://youtu.be/2PA6jsyUVpY', '-browser')</callback>
         </demoitem>

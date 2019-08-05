@@ -148,6 +148,11 @@
     
     <!-- Video demos -->
     <demosection>
+        <demoitem>
+            <type>video</type>
+            <label>How to set up Autoware Toolbox</label>
+            <callback>web('https://youtu.be/585bJhutSYc', '-browser')</callback>
+        </demoitem>
         <label>Video Demos</label>
         <demoitem>
             <type>video</type>
