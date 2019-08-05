@@ -148,12 +148,17 @@
     
     <!-- Video demos -->
     <demosection>
+        <label>Video Demos</label>
         <demoitem>
             <type>video</type>
             <label>How to set up Autoware Toolbox</label>
             <callback>web('https://youtu.be/585bJhutSYc', '-browser')</callback>
         </demoitem>
-        <label>Video Demos</label>
+        <demoitem>
+            <type>video</type>
+            <label>VoxelGridFilter.m</label>
+            <callback>web('https://youtu.be/yQtorst1fSQ', '-browser')</callback>
+        </demoitem>
         <demoitem>
             <type>video</type>
             <label>VelPoseConnect.m</label>
@@ -164,6 +169,15 @@
             <label>vel_pose_connect_sl.slx</label>
             <callback>web('https://youtu.be/HsVY3wIGg8A', '-browser')</callback>
         </demoitem>
-    </demosection>
-    
+        <demoitem>
+            <type>video</type>
+            <label>twist_filter_sl.slx</label>
+            <callback>web('https://youtu.be/LNWJ1iG0WoE', '-browser')</callback>
+        </demoitem>
+        <demoitem>
+            <type>video</type>
+            <label>pure_pursuit_sl.slx</label>
+            <callback>web('https://youtu.be/C1ay6RXpXGo', '-browser')</callback>
+        </demoitem>        
+    </demosection>    
 </demos>

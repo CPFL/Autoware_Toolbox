@@ -155,6 +155,11 @@
         </demoitem>
         <demoitem>
             <type>video</type>
+            <label>VoxelGridFilter.m</label>
+            <callback>web('https://youtu.be/yQtorst1fSQ', '-browser')</callback>
+        </demoitem>
+        <demoitem>
+            <type>video</type>
             <label>VelPoseConnect.m</label>
             <callback>web('https://youtu.be/2PA6jsyUVpY', '-browser')</callback>
         </demoitem>
@@ -163,5 +168,15 @@
             <label>vel_pose_connect_sl.slx</label>
             <callback>web('https://youtu.be/HsVY3wIGg8A', '-browser')</callback>
         </demoitem>
+        <demoitem>
+            <type>video</type>
+            <label>twist_filter_sl.slx</label>
+            <callback>web('https://youtu.be/LNWJ1iG0WoE', '-browser')</callback>
+        </demoitem>
+        <demoitem>
+            <type>video</type>
+            <label>pure_pursuit_sl.slx</label>
+            <callback>web('https://youtu.be/C1ay6RXpXGo', '-browser')</callback>
+        </demoitem>                        
     </demosection>    
 </demos>
