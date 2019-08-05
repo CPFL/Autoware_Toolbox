@@ -69,7 +69,7 @@ twist_filter の Simulink モデルを実行します。
 set_param(model, 'SimulationCommand', 'Start');
 ```
 
-## 8. rviz で車両の初期位置を設定
+## 9. rviz で車両の初期位置を設定
  (1) rviz の「2D Pose Estimate」をクリックします。
  (2) その後、車両の初期位置から移動方向にマウスドラッグして矢印を設定します。
 
@@ -77,7 +77,7 @@ set_param(model, 'SimulationCommand', 'Start');
 
 <html><br></html>
 
-## 9. 経路追従の開始
+## 10. 経路追従の開始
 rviz で初期位置を設定後しばらくすると、経路追従が始まります。  
 ![result_waypoint_follower](images/result_waypoint_follower.png)
 
@@ -85,7 +85,7 @@ rviz で初期位置を設定後しばらくすると、経路追従が始まり
 [ここ](./images/twist_filter/rosgraph_twist_filter.png) をクリックしてください。
 twist_filter_sl で生成されたノードは /twist_filter_sl_81473 です。
 
-## 10. 終了処理
+## 11. 終了処理
 下記のコマンドを実行して終了します。  
 ```MATLAB
 set_param(model, 'SimulationCommand', 'Stop');
@@ -96,4 +96,4 @@ clear('model', 'twist_filter_folder');
 ```
 ---
 # Demo Video
-[![Demo Video](https://i.ytimg.com/vi/LNWJ1iG0WoE/2.jpg?time=1564063583670)](https://youtu.be/LNWJ1iG0WoE)
+[![Demo Video](https://i9.ytimg.com/vi/LNWJ1iG0WoE/mq2.jpg?sqp=CLDI3ukF&rs=AOn4CLAfKJEwYaf6EANbwuGWXy3p13xjtg)](https://youtu.be/LNWJ1iG0WoE)
