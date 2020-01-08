@@ -41,6 +41,8 @@ Created with R2018b
 - [Japanese](docs/ja/helptoc_ja.md)
 
 ## Research Papers for Citation
-1. Shota Tokunaga, Yuki Horita, Yasuhiro Oda and Takuya Azumi, ``IDF-Autoware: Integrated Development Framework for ROS-based Self-driving Systems Using MATLAB/Simulink,'' In Proceedings of the Workshop of Autonomous Systems Design (ASD2019), Florence, Italy, Mar. 2019. [Link](http://drops.dagstuhl.de/opus/volltexte/2019/10336/)
+1. Keita Miura, Shota Tokunaga, Noriyuki Ota, Yoshiharu Tange and Takuya Azumi, ``Autoware Toolbox: MATLAB/Simulink Benchmark Suite for ROS-based Self-driving Software Platform,''  In Proceedings of the 30th International Workshop on Rapid System Prototyping (RSP), New York, USA, Oct. 2019. [Link](https://dl.acm.org/doi/10.1145/3339985.3358494)
 
-2. Shota Tokunaga, Noriyuki Ota, Yoshiharu Tange, Keita Miura, and Takuya Azumi, ``Demo Abstract: MATLAB/Simulink Benchmark Suite for ROS-based Self-driving System,'' Demo Session of the 10th ACM/IEEE International Conference on Cyber-Physical Systems (ICCPS2019),  Montreal, Canada, Apr. 2019.
+2. Shota Tokunaga, Yuki Horita, Yasuhiro Oda and Takuya Azumi, ``IDF-Autoware: Integrated Development Framework for ROS-based Self-driving Systems Using MATLAB/Simulink,'' In Proceedings of the Workshop of Autonomous Systems Design (ASD2019), Florence, Italy, Mar. 2019. [Link](http://drops.dagstuhl.de/opus/volltexte/2019/10336/)
+
+3. Shota Tokunaga, Noriyuki Ota, Yoshiharu Tange, Keita Miura, and Takuya Azumi, ``Demo Abstract: MATLAB/Simulink Benchmark Suite for ROS-based Self-driving System,'' Demo Session of the 10th ACM/IEEE International Conference on Cyber-Physical Systems (ICCPS2019),  Montreal, Canada, Apr. 2019.
