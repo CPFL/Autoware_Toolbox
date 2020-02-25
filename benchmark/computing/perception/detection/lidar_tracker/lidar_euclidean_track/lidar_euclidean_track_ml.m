@@ -28,7 +28,8 @@ function cloud_clusters_class_callback(~, cloud_cluster_array)
     v_pre_cloud_cluster_size = numel(v_pre_cloud_cluster);
     
     for i = 1:cluster_size
-        cluster_centroid = rosmessage('geometry_msgs/Point');
+        %cluster_centroid = rosmessage('geometry_msgs/Point');
+        cluster_centroid = rosmessage('autoware_msgs/Centroids');
         min_distance = realmax;
         stamped_id = false;
         cluster_centroid = pos_stamped2pos(base_msg.Clusters(i).CentroidPoint);

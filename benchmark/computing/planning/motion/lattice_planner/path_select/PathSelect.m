@@ -1,4 +1,4 @@
-classdef PathSelect < handle
+rosclassdef PathSelect < handle
     % PathSelect Generating final waypoints from temporal waypoints..
     %
     

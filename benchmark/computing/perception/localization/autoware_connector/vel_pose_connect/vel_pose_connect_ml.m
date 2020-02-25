@@ -37,7 +37,7 @@ if simulation_mode == 0
     
     robotics.ros.Subscriber(node_pose_relay, '/ndt_pose', 'geometry_msgs/PoseStamped', @ndt_pose_callback);
     robotics.ros.Subscriber(node_vel_relay, '/estimate_twist', 'geometry_msgs/TwistStamped', @estimate_twist_callback);
-    robotics.ros.Subscriber(node_can_status_translator, '/can_info', 'autoware_msgs/CanInfo', @can_info_callback);
+    robotics.ros.Subscriber(node_can_status_translator, '/can_info', 'autoware_can_msgs/CANInfo', @can_info_callback);
     robotics.ros.Subscriber(node_can_status_translator, '/vehicle_status', 'autoware_msgs/VehicleStatus', @vehicle_status_callback); 
 else
     robotics.ros.Subscriber(node_pose_relay, '/sim_pose', 'geometry_msgs/PoseStamped', @sim_pose_callback,'BufferSize',10);
